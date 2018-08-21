@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu
 {
@@ -22,8 +22,8 @@ namespace ProyectoBase.Pages.Menu
         }
 
         public cat_usuarios cat_usuarios { get; set; }
-        public seg_expira_clave seg_expira_clave { get; set; }
-        public seg_usuarios_estatu seg_usuario_estatus { get; set; }
+        public seg_expira_claves seg_expira_clave { get; set; }
+        public seg_usuarios_estatus seg_usuario_estatus { get; set; }
 
         public string Usuario { get; set; }
         public string Contraseña { get; set; }
@@ -78,8 +78,8 @@ namespace ProyectoBase.Pages.Menu
                         //update
                         
                         seg_expira_clave.Actual = "N";
-                        seg_expira_clave.FechaUltMod = DateTime.Now;
-                        seg_expira_clave.UsuarioMod = "Sistema";
+                      //  seg_expira_clave.FechaUltMod = DateTime.Now;
+                      //  seg_expira_clave.UsuarioMod = "Sistema";
 
                         _context.Attach(seg_expira_clave).State = EntityState.Modified;
                         _context.SaveChanges();
@@ -129,13 +129,13 @@ namespace ProyectoBase.Pages.Menu
                     {
                         if (seg_expira_clave == null)
                         {
-                            if (cat_usuarios.Numintentos == Microsoft.AspNetCore.Mvc.Razor.Global.intentos)
+                            if (cat_usuarios.NumIntentos == Microsoft.AspNetCore.Mvc.Razor.Global.intentos)
                             {
 
                                 seg_usuario_estatus.FechaEstatus = DateTime.Now;
                                 seg_usuario_estatus.Actual = "N";
-                                seg_usuario_estatus.FechaUltMod = DateTime.Now;
-                                seg_usuario_estatus.UsuarioMod = "Sistema";
+                              //  seg_usuario_estatus.FechaUltMod = DateTime.Now;
+                              //  seg_usuario_estatus.UsuarioMod = "Sistema";
 
                                 _context.Attach(seg_usuario_estatus).State = EntityState.Modified;
                                 _context.SaveChanges();

@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios
 {
     public class IndexModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public IndexModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public IndexModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -40,7 +40,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios
             from usuarios in _context.cat_usuarios
             join personas in _context.rh_cat_personas on usuarios.IdPersona equals personas.IdPersona
             select new { nombre = personas.Nombre + " " + personas.ApPaterno + " " + personas.ApMaterno, usuario = usuarios.Usuario,
-                expira = usuarios.Expira, conectado = usuarios.Conectado, intentosMax = usuarios.Numintentos, fechaReg = usuarios.FechaReg,
+                expira = usuarios.Expira, conectado = usuarios.Conectado, intentosMax = usuarios.NumIntentos, fechaReg = usuarios.FechaReg,
                 fechaUlt = usuarios.FechaUltMod, activo = usuarios.Activo, borrado = usuarios.Borrado };
             
         }

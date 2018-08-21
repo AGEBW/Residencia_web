@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios
 {
     public class CreateModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public CreateModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public CreateModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -33,7 +33,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios
         [BindProperty]
         public cat_usuarios cat_usuario { get; set; }
         [BindProperty]
-        public seg_usuarios_estatu estatu { get; set; }
+        public seg_usuarios_estatus estatu { get; set; }
 
         public async Task<IActionResult> OnPostAsync(bool ExpiraP)
         {
@@ -78,9 +78,9 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios
             estatu.FechaEstatus = DateTime.Now;
             estatu.Actual = "S";
             estatu.Observacion = "Creación del usuario";
-            estatu.FechaUltMod = DateTime.Now;
+            //estatu.FechaUltMod = DateTime.Now;
             estatu.UsuarioReg = "Admin";
-            estatu.UsuarioMod = "Admin";
+            //estatu.UsuarioMod = "Admin";
             estatu.Activo = "S";
             estatu.Borrado = "N";
             estatu.FechaReg = DateTime.Now;

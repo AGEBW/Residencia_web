@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 
 
@@ -19,9 +19,9 @@ namespace ProyectoBase.Pages.Menu
 {
     public class OlvidoContraModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public OlvidoContraModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public OlvidoContraModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }

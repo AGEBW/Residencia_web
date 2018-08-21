@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios
 {
     public class DeleteModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public DeleteModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public DeleteModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,11 +24,11 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios
         [BindProperty]
         public cat_usuarios cat_usuario { get; set; }
         [BindProperty]
-        public seg_expira_clave claves { get; set; }
+        public seg_expira_claves claves { get; set; }
         [BindProperty]
-        public seg_usuarios_estatu estatus { get; set; }
-        [BindProperty]
-        public seg_usuarios_grupo grupos { get; set; }
+        public seg_usuarios_estatus estatus { get; set; }
+        //[BindProperty]
+       // public seg_usuarios_grupos grupos { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

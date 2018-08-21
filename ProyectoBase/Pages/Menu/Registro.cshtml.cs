@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu
 {
     public class RegistroModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public RegistroModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public RegistroModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,13 +24,13 @@ namespace ProyectoBase.Pages.Menu
         [BindProperty]
         public cat_usuarios cat_usuario { get; set; }
         [BindProperty]
-        public seg_expira_clave seg_expira_clave { get; set; }
+        public seg_expira_claves seg_expira_clave { get; set; }
         [BindProperty]
-        public rh_cat_persona rh_cat_persona { get; set; }
+        public rh_cat_personas rh_cat_persona { get; set; }
         [BindProperty]
         public rh_cat_dir_web rh_cat_dir_web { get; set; }
         [BindProperty]
-        public rh_cat_telefono rh_cat_telefono { get; set; }
+        public rh_cat_telefonos rh_cat_telefono { get; set; }
 
         //AGREGAMOS LAS VARIABLES DEL FORMULARIO
 
