@@ -1,0 +1,81 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Registro</h2>
+
+<h4>Nuevo Telefono</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="rh_cat_telefono.ClaveReferencia" id="id" class="form-control" />
+            <input type="hidden" asp-for="rh_cat_telefono.IdTipoGenTelefono" value="10" />
+            <div class="form-group">
+                <label class="control-label">Codigo Pais</label>
+                <input asp-for="rh_cat_telefono.CodPais" class="form-control" />
+                <span asp-validation-for="rh_cat_telefono.CodPais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tipo de telefono</label>
+                <select asp-for="rh_cat_telefono.IdGenTelefono" class="form-control" asp-items="ViewBag.IdTipoTel"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">No Telefono</label>
+                <input asp-for="rh_cat_telefono.NumTelefono" class="form-control" />
+                <span asp-validation-for="rh_cat_telefono.NumTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">No Extensión</label>
+                <input asp-for="rh_cat_telefono.NumExtencion" class="form-control" />
+                <span asp-validation-for="rh_cat_telefono.NumExtencion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="TelP" /> Telefono Principal
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_telefono.Referencia" class="control-label"></label>
+                <input asp-for="rh_cat_telefono.Referencia" class="form-control" />
+                <span asp-validation-for="rh_cat_telefono.Referencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Usuario que registró</label>
+                <input asp-for="rh_cat_telefono.UsuarioReg" class="form-control" />
+                <span asp-validation-for="rh_cat_telefono.UsuarioReg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ultimo que modifico</label>
+                <input asp-for="rh_cat_telefono.UsuarioMod" class="form-control" />
+                <span asp-validation-for="rh_cat_telefono.UsuarioMod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-success" /> | <a asp-page="Index" class="btn btn-warning" asp-route-id="@Model.IdP" asp-route-control="@Model.Control" asp-route-searchString="@Model.SearchString" asp-route-ap="@Model.Ap" asp-route-am="@Model.Am">Atras</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var parametro = getParameterByName('id');
+        $('#id').val(parametro);
+    </script>
+
+}

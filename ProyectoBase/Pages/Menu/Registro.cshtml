@@ -1,0 +1,70 @@
+﻿@page
+@model Pages.Menu.RegistroModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h3>REGISTRO DE NUEVO USUARIO</h3>
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+    <form>
+
+        <label class="control-label">Email: </label>
+        <input asp-for="email" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Confirmar Email: </label>
+        <input asp-for="confirmaemail" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Nombre: </label>
+        <input asp-for="nombre" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Apellido Paterno: </label>
+        <input asp-for="apPaterno" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Apellido Materno: </label>
+        <input asp-for="apMaterno" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Numero de Control: </label>
+        <input asp-for="numerocontrol" type="text" class="form-control" />
+        <br />
+
+        <div class="form-group">
+            <label class="control-label">Sexo</label>
+            <select asp-for="sexo" class="form-control" asp-items="ViewBag.Sexos"></select>
+        </div>
+  
+        <label class="control-label">Usuario: </label>
+        <input asp-for="usuario" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Contraseña: </label>
+        <input asp-for="contraseña" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Confirmar Contraseña: </label>
+        <input asp-for="confirmarcontraseña" type="text" class="form-control" />
+        <br />
+
+        <label class="control-label">Telefono: </label>
+        <input asp-for="telefono" type="text" class="form-control" />
+        <br />
+
+        <div class="form-group">    
+            <label class="control-label">Foto: </label>
+            <input asp-for="rutafoto" id="rutas" class="form-control"/>
+        </div>
+
+        <label class="control-label">Alias: </label>
+        <input asp-for="alias" type="text" class="form-control" />
+        <br />
+
+        <input type="submit" value="Registrar" class="btn btn-success" />
+            
+    </form>
+</div>
+

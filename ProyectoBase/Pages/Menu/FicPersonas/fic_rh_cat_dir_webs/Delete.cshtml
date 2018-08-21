@@ -1,0 +1,88 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Esta seguro de querer eliminar esta direccion web?</h3>
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Descripción:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.DesDirWeb)
+        </dd>
+        <dt>
+            Dirección Web:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.DirWeb)
+        </dd>
+        <dt>
+            Principal:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Principal)
+        </dd>
+        <dt>
+            Clave Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.ClaveReferencia)
+        </dd>
+        <dt>
+            Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Referencia)
+        </dd>
+        <dt>
+            Fecha Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.FechaReg)
+        </dd>
+        <dt>
+            Ultima Modificación:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario Registrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.UsuarioReg)
+        </dd>
+        <dt>
+            Usuario Modificado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.UsuarioMod)
+        </dd>
+        <dt>
+            Activo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Activo)
+        </dd>
+        <dt>
+            Borrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Borrado)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="rh_cat_dir_web.IdDirWeb" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-warning" asp-route-id="@Model.IdP" asp-route-control="@Model.Control" asp-route-searchString="@Model.SearchString" asp-route-ap="@Model.Ap" asp-route-am="@Model.Am">Atras</a>
+    </form>
+</div>

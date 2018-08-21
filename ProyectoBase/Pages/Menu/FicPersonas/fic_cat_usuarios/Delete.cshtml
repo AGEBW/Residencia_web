@@ -1,0 +1,94 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Esta seguro de querer eliminar a este usuario?</h3>
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Id Persona:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.IdPersona)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Usuario):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Usuario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Expira):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Expira)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Conectado):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Conectado)
+        </dd>
+        <dt>
+            Fecha Alta:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.FechaAlta)
+        </dd>
+        <dt>
+            Numero de Intentos:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Numintentos)
+        </dd>
+        <dt>
+            Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.FechaReg)
+        </dd>
+        <dt>
+            Ultima modificación:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que lo registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.UsuarioReg)
+        </dd>
+        <dt>
+            Usuario que modificó:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.UsuarioMod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Activo):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Borrado):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Borrado)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="cat_usuario.IdUsuario" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-warning">Regresar</a>
+    </form>
+</div>

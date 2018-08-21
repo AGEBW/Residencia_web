@@ -1,0 +1,143 @@
+﻿@page
+@model ProyectoBase.Pages.FicPersonas.fic_rh_cat_personas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Instituto:
+        </dt>
+        <dd>
+            @Model.Instituto
+        </dd>
+        <dt>
+            No. de Control:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.NumControl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Nombre):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Nombre)
+        </dd>
+        <dt>
+            Apellido Paterno:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.ApPaterno)
+        </dd>
+        <dt>
+            Apellido Materno:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.ApMaterno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.RFC):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.RFC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.CURP):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.CURP)
+        </dd>
+        <dt>
+            Fecha de Nacimiento:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.FechaNac)
+        </dd>
+        <dt>
+            Tipo Persona:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.TipoPersona)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Sexo):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Sexo)
+        </dd>
+        <dt>
+            Foto:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.RutaFoto)
+        </dd>
+        <dt>
+            Ocupación:
+        </dt>
+        <dd>
+            @Model.Ocupacion
+        </dd>
+        <dt>
+            Estado Civil:
+        </dt>
+        <dd>
+            @Model.EstadoCivil
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Alias):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Alias)
+        </dd>
+        <dt>
+            Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.FechaReg)
+        </dd>
+        <dt>
+            Ultima modificación:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que lo registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.UsuarioReg)
+        </dd>
+        <dt>
+            Último en modificar:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.UsuarioMod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Activo):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Borrado):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Borrado)
+        </dd>
+    </dl>
+</div>
+<div>
+
+    <a asp-page="../fic_rh_cat_domicilios/Index" class="btn btn-primary" asp-route-id="@Model.rh_cat_persona.IdPersona" asp-route-control="@Model.rh_cat_persona.NumControl" asp-route-searchString="@Model.rh_cat_persona.Nombre" asp-route-ap="@Model.rh_cat_persona.ApPaterno" asp-route-am="@Model.rh_cat_persona.ApMaterno">Domicilios</a> |
+    <a asp-page="../fic_rh_cat_telefonos/Index" class="btn btn-primary" asp-route-id="@Model.rh_cat_persona.IdPersona" asp-route-control="@Model.rh_cat_persona.NumControl" asp-route-searchString="@Model.rh_cat_persona.Nombre" asp-route-ap="@Model.rh_cat_persona.ApPaterno" asp-route-am="@Model.rh_cat_persona.ApMaterno">Telefonos</a> |
+    <a asp-page="../fic_rh_cat_dir_webs/Index" class="btn btn-primary" asp-route-id="@Model.rh_cat_persona.IdPersona" asp-route-control="@Model.rh_cat_persona.NumControl" asp-route-searchString="@Model.rh_cat_persona.Nombre" asp-route-ap="@Model.rh_cat_persona.ApPaterno" asp-route-am="@Model.rh_cat_persona.ApMaterno">Direccion Web</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.rh_cat_persona.IdPersona" class="btn btn-success">Editar</a> |
+    <a asp-page="./Index" class="btn btn-warning">Atras</a>
+</div>

@@ -1,0 +1,130 @@
+﻿@page
+@model ProyectoBase.Pages.FicPersonas.fic_rh_cat_personas.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Esta seguro de querer eliminar a esta persona?</h3>
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Instituto:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.IdInstituto)
+        </dd>
+        <dt>
+            No. de Control:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.NumControl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Nombre):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Nombre)
+        </dd>
+        <dt>
+            Apellido Paterno:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.ApPaterno)
+        </dd>
+        <dt>
+            Apellido Materno:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.ApMaterno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.RFC):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.RFC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.CURP):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.CURP)
+        </dd>
+        <dt>
+            Fecha de Nacimiento:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.FechaNac)
+        </dd>
+        <dt>
+            Tipo Persona:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.TipoPersona)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Sexo):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Sexo)
+        </dd>
+        <dt>
+            Foto:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.RutaFoto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Alias)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Alias)
+        </dd>
+        <dt>
+            Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.FechaReg)
+        </dd>
+        <dt>
+            Ultima modificación:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que lo registró:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.UsuarioReg)
+        </dd>
+        <dt>
+            Último en modificar:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.UsuarioMod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Activo):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rh_cat_persona.Borrado):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_persona.Borrado)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="rh_cat_persona.IdPersona" />
+        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <a asp-page="./Index">Regresar</a>
+    </form>
+</div>

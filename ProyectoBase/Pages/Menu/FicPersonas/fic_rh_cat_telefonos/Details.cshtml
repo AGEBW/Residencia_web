@@ -1,0 +1,97 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo Pais:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.CodPais)
+        </dd>
+        <dt>
+            Tipo de telefono:
+        </dt>
+        <dd>
+            @Model.TipoTel
+        </dd>
+        <dt>
+            No. Telefono:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.NumTelefono)
+        </dd>
+        <dt>
+            No. Extensión:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.NumExtencion)
+        </dd>
+        <dt>
+            Principal:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Principal)
+        </dd>
+        <dt>
+            Clave Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.ClaveReferencia)
+        </dd>
+        <dt>
+            Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Referencia)
+        </dd>
+        <dt>
+            Fecha de Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.FechaReg)
+        </dd>
+        <dt>
+            Ultima Modificacion:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que registró:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.UsuarioReg)
+        </dd>
+        <dt>
+            Ultimo en modificar:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.UsuarioMod)
+        </dd>
+        <dt>
+            Activo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Activo)
+        </dd>
+        <dt>
+            Borrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Borrado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.rh_cat_telefono.IdTelefono" class="btn btn-success">Editar</a> |
+    <a asp-page="./Index" asp-route-id="@Microsoft.AspNetCore.Mvc.Razor.Global.id" class="btn btn-warning">Regresar</a>
+</div>

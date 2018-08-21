@@ -1,0 +1,91 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Descripción:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.DesDirWeb)
+        </dd>
+        <dt>
+            Tipo de telefono:
+        </dt>
+        <dd>
+            @Model.TipoDirWeb
+        </dd>
+        <dt>
+            Direccion Web:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.DirWeb)
+        </dd>
+        <dt>
+            Principal:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Principal)
+        </dd>
+        <dt>
+            Clave Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.ClaveReferencia)
+        </dd>
+        <dt>
+            Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Referencia)
+        </dd>
+        <dt>
+            Fecha Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.FechaReg)
+        </dd>
+        <dt>
+            Ultima Modificación:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario Registrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.UsuarioReg)
+        </dd>
+        <dt>
+            Usuario Modificado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.UsuarioMod)
+        </dd>
+        <dt>
+            Activo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Activo)
+        </dd>
+        <dt>
+            Borrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_dir_web.Borrado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.rh_cat_dir_web.IdDirWeb" class="btn btn-success">Editar</a> |
+    <a asp-page="./Index" class="btn btn-warning" asp-route-id="@Microsoft.AspNetCore.Mvc.Razor.Global.id">Atras</a>
+</div>

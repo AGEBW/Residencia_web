@@ -1,0 +1,323 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_domicilios.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Registro</h2>
+
+<h4>Nuevo domicilio</h4>
+<hr />
+
+<form method="post">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="rh_cat_domicilio.ClaveReferencia" id="id" />
+            <input type="hidden" asp-for="rh_cat_domicilio.IdTipoGenDom" value="8"/>
+            <div class="form-group">
+                <label class="control-label">Tipo de domicilio</label>
+                <select asp-for="rh_cat_domicilio.IdGenDom" class="form-control" asp-items="ViewBag.IdTipoDom"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Domicilio" class="control-label"></label>
+                <input asp-for="rh_cat_domicilio.Domicilio" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Domicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Entre calle 1</label>
+                <input asp-for="rh_cat_domicilio.EntreCalle1" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.EntreCalle1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Entre calle 2</label>
+                <input asp-for="rh_cat_domicilio.EntreCalle2" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.EntreCalle2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Código Postal</label>
+                <input asp-for="rh_cat_domicilio.CodigoPostal" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.CodigoPostal" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Coordenadas" class="control-label"></label>
+                <br />
+                <input type="text" maxlength="100" id="address" placeholder="Dirección" />
+                <input type="button" id="search" onclick="buscar()" value="Buscar" />
+                <input id="coords" asp-for="rh_cat_domicilio.Coordenadas" class="form-control" />
+
+                <div id='map_canvas' style="height:275px;"></div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="DomicilioP" /> Domicilio Principal
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Pais" class="control-label"></label>
+                <select id="paises" class="form-control" asp-items="ViewBag.IdPais" onchange="getPais()"></select>
+                <br />
+                <input id="pais" asp-for="rh_cat_domicilio.Pais" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Pais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Estado" class="control-label"></label>
+                <select id="estados" class="form-control" asp-items="ViewBag.IdEstado" onchange="getEstado()"></select>
+                <br />
+                <input id="estado" asp-for="rh_cat_domicilio.Estado" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Estado" class="text-danger"></span>
+            </div>
+
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Municipio" class="control-label"></label>
+                <select id="municipios" class="form-control" asp-items="ViewBag.IdMunicipio" onchange="getMunicipio()"></select>
+                <br />
+                <input id="municipio" asp-for="rh_cat_domicilio.Municipio" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Municipio" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Localidad" class="control-label"></label>
+                <select id="localidades" class="form-control" asp-items="ViewBag.IdLocalidad" onchange="getLocalidad()"></select>
+                <br />
+                <input id="localidad" asp-for="rh_cat_domicilio.Localidad" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Localidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Colonia" class="control-label"></label>
+                <select id="colonias" class="form-control" asp-items="ViewBag.IdColonia" onchange="getColonia()"></select>
+                <br />
+                <input id="colonia" asp-for="rh_cat_domicilio.Colonia" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Colonia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Referencia" class="control-label"></label>
+                <input asp-for="rh_cat_domicilio.Referencia" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Referencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tipo Domicilio</label>
+                <select asp-for="rh_cat_domicilio.TipoDomicilio" class="form-control" asp-items="ViewBag.TipoDom"></select> 
+                <span asp-validation-for="rh_cat_domicilio.TipoDomicilio" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" onclick="unlock()" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</form>
+
+<div>
+    <a asp-page="Index" asp-route-id="@Microsoft.AspNetCore.Mvc.Razor.Global.id"  class="btn btn-warning">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function unlock() {
+            document.getElementById("colonia").disabled = false;
+            document.getElementById("localidad").disabled = false;
+            document.getElementById("municipio").disabled = false;
+            document.getElementById("estado").disabled = false;
+            document.getElementById("pais").disabled = false;
+        }
+
+        function getPais(name) {
+            name = $('#paises').val();
+            $('#pais').val(name);
+            if (name == "") {
+                document.getElementById("pais").disabled = false;
+            } else {
+                document.getElementById("pais").disabled = true;
+             }
+            
+           
+            $('#estados').val("");
+            $('#estado').val("");
+        }
+
+
+        function getEstado(name) {
+            name = $('#estados').val();
+            $('#estado').val(name);
+            if (name == "") {
+                document.getElementById("estado").disabled = false;
+            } else {
+                document.getElementById("estado").disabled = true;
+            }
+
+            $('#municipios').val("");
+            $('#municipio').val("");
+        }
+
+        function getMunicipio(name) {
+            name = $('#municipios').val();
+            $('#municipio').val(name);
+            if (name == "") {
+                document.getElementById("municipio").disabled = false;
+            } else {
+                document.getElementById("municipio").disabled = true;
+            }
+
+            $('#localidades').val("");
+            $('#localidad').val("");
+        }
+
+        function getLocalidad(name) {
+            name = $('#localidades').val();
+            $('#localidad').val(name);
+            if (name == "") {
+                document.getElementById("localidad").disabled = false;
+            } else {
+                document.getElementById("localidad").disabled = true;
+            }
+
+            $('#colonias').val("");
+            $('#colonia').val("");
+        }
+        function getColonia(name) {
+            name = $('#colonias').val();
+            $('#colonia').val(name);
+
+            if (name == "") {
+                document.getElementById("colonia").disabled = false;
+            } else {
+                document.getElementById("colonia").disabled = true;
+            }
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var parametro = getParameterByName('id');
+        $('#id').val(parametro);
+
+        /*
+        var map;
+        function initialize() {
+            map = new google.maps.Map(document.getElementById('map-canvas'), {
+                zoom: 13,
+                center: { lat: 21.47647298962788, lng: -104.86541748073239 }
+
+            });
+
+
+
+            var marker = new google.maps.Marker({
+                position: map.getCenter(),
+                map: map,
+                draggable: true
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                document.getElementById("coords").value = this.getPosition().toString();
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+        */
+        
+
+
+
+        
+        $(document).ready(function () {
+            load_map();
+        });
+
+        var map;
+
+        function load_map() {
+           
+            var myLatlng = new google.maps.LatLng(20.68009, -101.35403);
+           
+            
+
+            var myOptions = {
+                zoom: 2,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //////
+
+            var markerOptions = { position: myLatlng, draggable: true }
+            var marker = new google.maps.Marker(markerOptions);
+            marker.setMap(map);
+            //////
+            map = new google.maps.Map($("#map_canvas").get(0), myOptions);
+            
+        }
+
+        
+  
+        
+        
+      
+
+        function buscar() { 
+            var address = $('#address').val();
+           
+            // Creamos el Objeto Geocoder
+            var geocoder = new google.maps.Geocoder();
+            // Hacemos la petición indicando la dirección e invocamos la función
+            // geocodeResult enviando todo el resultado obtenido
+            geocoder.geocode({ 'address': address }, geocodeResult);
+  
+        }
+
+        function geocodeResult(results, status) {
+            // Verificamos el estado
+            if (status == 'OK') {
+                document.getElementById("coords").value = results[0].geometry.location;
+
+                // Si hay resultados encontrados, centramos y refrescamos el mapa
+                // esto para eliminar cualquier marcador antes puesto
+                var mapOptions = {
+                    center: results[0].geometry.location,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map($("#map_canvas").get(0), mapOptions);
+                // fitBounds acercará el mapa con el zoom adecuado de acuerdo a lo buscado
+                map.fitBounds(results[0].geometry.viewport);
+                // Dibujamos un marcador con la ubicación del primer resultado obtenido
+                var markerOptions = { position: results[0].geometry.location, draggable: true }
+                var marker = new google.maps.Marker(markerOptions);
+                marker.setMap(map);
+                google.maps.event.addListener(marker, 'dragend', function (event) {
+                    document.getElementById("coords").value = this.getPosition().toString();
+                });
+               
+            } else {
+                // En caso de no haber resultados o que haya ocurrido un error
+                // lanzamos un mensaje con el error
+                alert("Geocoding no tuvo éxito debido a: " + status);
+            }
+        }
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU0IX4143qwqstDtskLAJv_x93PNhOZBY"></script>
+
+}

@@ -1,0 +1,94 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Esta seguro de querer eliminar este telefono?</h3>
+<div>
+    <h4>Informacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo Pais:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.CodPais)
+        </dd>
+        <dt>
+            No Telefono:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.NumTelefono)
+        </dd>
+        <dt>
+            No Extensión:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.NumExtencion)
+        </dd>
+        <dt>
+            Principal:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Principal)
+        </dd>
+        <dt>
+            Clave Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.ClaveReferencia)
+        </dd>
+        <dt>
+            Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Referencia)
+        </dd>
+        <dt>
+            Fecha que registró:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.FechaReg)
+        </dd>
+        <dt>
+            Ultimo que modifico:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario Registrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.UsuarioReg)
+        </dd>
+        <dt>
+            Usuario Modificado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.UsuarioMod)
+        </dd>
+        <dt>
+            Activo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Activo)
+        </dd>
+        <dt>
+            Borrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_telefono.Borrado)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="rh_cat_telefono.IdTelefono" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-warning" asp-route-id="@Model.IdP" asp-route-control="@Model.Control" asp-route-searchString="@Model.SearchString" asp-route-ap="@Model.Ap" asp-route-am="@Model.Am">Regresar</a>
+    </form>
+</div>

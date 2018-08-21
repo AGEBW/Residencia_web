@@ -1,0 +1,158 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Contraseñas</h2>
+<label>@Microsoft.AspNetCore.Mvc.Razor.Global.id </label> <label>@Microsoft.AspNetCore.Mvc.Razor.Global.nombre </label>
+<p>
+    <a asp-page="Create" asp-route-id="@Microsoft.AspNetCore.Mvc.Razor.Global.id" class="btn btn-danger">Nueva Contraseña</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <div>Id Usuario</div>
+            </th>
+            <th>
+                <div>Expira Inicio</div>
+            </th>
+            <th>
+                <div>Expira Fin</div>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seg_expira_clave[0].Actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seg_expira_clave[0].Clave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seg_expira_clave[0].ClaveAutoSys)
+            </th>
+            <th>
+                <div>Fecha Registro</div>
+            </th>
+            <th>
+                <div>Ultima Modificación</div>
+            </th>
+            <th>
+                <div>Usuario Registrado</div>
+            </th>
+            <th>
+                Usuario Modificado
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seg_expira_clave[0].Activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seg_expira_clave[0].Borrado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.seg_expira_clave)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaExpiraIni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaExpiraFin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clave)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClaveAutoSys)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaReg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaUltMod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioReg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioMod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Borrado)
+                </td>
+                <td>
+                    <div class="dropdown" style="float:right;">
+                        <button class="dropbtn">Opciones</button>
+                        <div class="dropdown-content">
+                            <a asp-page="./Edit" asp-route-id="@item.IdClave">Editar</a>
+                            <a asp-page="./Details" asp-route-id="@item.IdClave">Detalles</a>
+                            <a asp-page="./Delete" asp-route-id="@item.IdClave">Borrar</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .dropbtn {
+        background-color: #E32F2F;
+        color: white;
+        padding: 5px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        height: 30px;
+        width: 90px;
+    }
+
+    .body {
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 90px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #FBB6B6;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #C62121;
+    }
+</style>

@@ -1,0 +1,101 @@
+﻿@page
+@model Pages.Menu.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+@if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseñas_coinciden == true)
+{
+    <div class="alert alert-success">
+        <strong>Realizado!</strong> Se ha actualizado la contraseña correctamente.
+    </div>
+
+}
+
+@if (Microsoft.AspNetCore.Mvc.Razor.Global.Login == true)
+{
+    <div class="page-header">
+        <h1>Bienvenido <small>@Microsoft.AspNetCore.Mvc.Razor.Global.name</small></h1>
+    </div>
+
+}
+
+
+
+
+<div class="row">
+
+    <div class="col-lg-7">
+        <h2 >Tecnologias utilizadas</h2>
+        <br />
+        <div class="contenedor">
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" src="~/images/logo net core.png" border="0" width="80" height="70" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Yii2 Framework</h4>
+                    Yii es un framework orientado a objetos, software libre, de alto rendimiento​​​ basado en componentes, PHP y framework para aplicaciones web.
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" src="~/images/logo boostrap.png" border="0" width="80" height="80" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Php</h4>
+                    Es un lenguaje de programación de propósito general de código del lado del servidor originalmente diseñado para el desarrollo web de contenido dinámico.
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2000px-HTML5_logo_and_wordmark.svg.png" border="0" width="80" height="80" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Html5</h4>
+                    HTML5 es la última versión de HTML . Se trata de una nueva versión de HTML, con nuevos elementos, atributos y comportamientos. Contiene un conjunto más amplio de tecnologías que permite a los sitios Web y a las aplicaciones ser más diversas y de gran alcance.
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" src="https://i2.wp.com/www.vfmedia.no/wp-content/uploads/2016/03/css-logo.png?fit=500%2C500" width="80" height="80" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Css</h4>
+                    Es el lenguaje utilizado para describir la presentación de documentos HTML o XML , esto incluye varios lenguajes basados en XML como son XHTML o SVG.
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" src="~/images/logo sql server.png" width="75" height="75" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Postgres</h4>
+                    PostgreSQL es un sistema de gestión de bases de datos relacional orientado a objetos y libre, publicado bajo la licencia PostgreSQL.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5 coca1">
+        <img class="media-object coca" src="~/images/coca2.png" border="0" width="450" height="600" alt="...">
+    </div>
+
+</div>
+
+

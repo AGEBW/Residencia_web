@@ -1,0 +1,183 @@
+﻿@page
+@model ProyectoBase.Pages.FicPersonas.fic_rh_cat_personas.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Registro</h2>
+
+<h4>Nueva persona</h4>
+<hr />
+
+<form method="post">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="rh_cat_persona.IdTipoGenOcupacion" value="5" />
+            <input type="hidden" asp-for="rh_cat_persona.IdTipoGenEstadoCivil" value="6" />
+            <div class="form-group">
+                <label class="control-label">Instituto</label>
+                <select asp-for="rh_cat_persona.IdInstituto" class="form-control" asp-items="ViewBag.Institutos"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">No. de Control</label>
+                <input asp-for="rh_cat_persona.NumControl" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.NumControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nombre</label>
+                <input asp-for="rh_cat_persona.Nombre" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Apellido Paterno</label>
+                <input asp-for="rh_cat_persona.ApPaterno" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.ApPaterno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Apellido Materno</label>
+                <input asp-for="rh_cat_persona.ApMaterno" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.ApMaterno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_persona.RFC" class="control-label"></label>
+                <input asp-for="rh_cat_persona.RFC" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.RFC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_persona.CURP" class="control-label"></label>
+                <input asp-for="rh_cat_persona.CURP" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.CURP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Sexo</label>
+                <select asp-for="rh_cat_persona.Sexo" class="form-control" asp-items="ViewBag.Sexos"></select>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Fecha de Nacimiento</label>
+                <input asp-for="rh_cat_persona.FechaNac" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.FechaNac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tipo de persona</label>
+                <select asp-for="rh_cat_persona.TipoPersona" class="form-control" asp-items="ViewBag.TipoPersona"></select>
+                <span asp-validation-for="rh_cat_persona.TipoPersona" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Foto</label>
+
+
+                <input type="file" id="rutas"  class="form-control" onchange="getRuta()"><br /><br />
+
+                <input type="hidden" id="ruta"  />
+
+                <input type="hidden" id="rutaFoto" asp-for="rh_cat_persona.RutaFoto"  />
+                <img width="200" alt="Imagen" />
+
+
+
+
+
+
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ocupación</label>
+                <select asp-for="rh_cat_persona.IdGenOcupacion" class="form-control" asp-items="ViewBag.IdOcupacion"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Estado Civil</label>
+                <select asp-for="rh_cat_persona.IdGenEstadoCivil" class="form-control" asp-items="ViewBag.IdEstadoCivil"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_persona.Alias" class="control-label"></label>
+                <input asp-for="rh_cat_persona.Alias" class="form-control" />
+                <span asp-validation-for="rh_cat_persona.Alias" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                    <div class="form-group">
+                        <input type="submit" value="Registrar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</form>
+
+
+<div>
+    <a asp-page="Index">Regresar</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // Escuchamos el evento 'change' del input donde cargamos el archivo
+            $(document).on('change', 'input[type=file]', function (e) {
+                // Obtenemos la ruta temporal mediante el evento
+                var TmpPath = URL.createObjectURL(e.target.files[0]);
+                // Mostramos la ruta temporal
+                $('span2').html(TmpPath);
+                $('img').attr('src', TmpPath);
+            });
+
+        });
+    </script>
+}
+
+<script>
+
+    function getSexo(name) {
+        name = $('#genero').val();
+        $('#sexo').val(name);
+    }
+
+    function getRuta(name) {
+
+        var ruta = document.getElementById('ruta');
+        name = $('#rutas').val();
+        ruta.value = name;
+        
+        var a = name.substring(12, name.length);
+       
+
+        var rutaFoto = document.getElementById('rutaFoto');
+        rutaFoto.value = "~/images/personas/" + a;
+
+        
+
+    }
+
+    
+
+</script>
+
+<style>
+    .enviar {
+        justify-content: flex-end;
+        background-color: brown;
+        align-items: flex-end;
+        align-content: flex-end;
+       
+    }
+</style>
+
+
+
+
+
+

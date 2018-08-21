@@ -1,0 +1,65 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>seg_usuarios_grupo</h4>
+<hr />
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="seg_usuarios_grupo.IdTipoGrupo" value="4" />
+            <input type="hidden" asp-for="seg_usuarios_grupo.IdsegGrupo" />
+            <input type="hidden" asp-for="seg_usuarios_grupo.UsuarioReg" />
+            <input type="hidden" asp-for="seg_usuarios_grupo.FechaReg" />
+
+            <div class="form-group">
+                <input type="hidden" asp-for="seg_usuarios_grupo.IdUsuario" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Grupo</label>
+                <select asp-for="seg_usuarios_grupo.IdGrupo" id="grupos2" class="form-control" asp-items="ViewBag.IdGrupos"></select>
+                <span>@ViewBag.Error</span>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="checkbox">
+                <label>
+                    <input asp-for="ActivoP" /> Activo
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="BorradoP" /> Borrado
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+
+        </div>
+</form>
+
+
+
+
+</div>
+
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

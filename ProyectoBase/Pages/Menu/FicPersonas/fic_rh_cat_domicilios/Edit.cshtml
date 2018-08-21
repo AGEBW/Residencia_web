@@ -1,0 +1,254 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_domicilios.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar</h2>
+
+<h4>Actualizar Domicilio</h4>
+<hr />
+
+<form method="post">
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="rh_cat_domicilio.FechaReg" class="form-control" />
+            <input type="hidden" asp-for="rh_cat_domicilio.IdDomicilio" />
+            <input type="hidden" asp-for="rh_cat_domicilio.ClaveReferencia" class="form-control" />
+            <input type="hidden" asp-for="rh_cat_domicilio.UsuarioReg" class="form-control" />
+            <input type="hidden" asp-for="rh_cat_domicilio.UsuarioMod" class="form-control" />
+            <input type="hidden" asp-for="rh_cat_domicilio.IdTipoGenDom" value="8" />
+            <div class="form-group">
+                <label class="control-label">Tipo de domicilio</label>
+                <select asp-for="rh_cat_domicilio.IdGenDom" class="form-control" asp-items="ViewBag.IdTipoDom"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Domicilio" class="control-label"></label>
+                <input asp-for="rh_cat_domicilio.Domicilio" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Domicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Entre Calle 1</label>
+                <input asp-for="rh_cat_domicilio.EntreCalle1" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.EntreCalle1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Entre Calle 2</label>
+                <input asp-for="rh_cat_domicilio.EntreCalle2" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.EntreCalle2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Codigo Postal</label>
+                <input asp-for="rh_cat_domicilio.CodigoPostal" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.CodigoPostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Coordenadas" class="control-label"></label>
+                <br />
+                <input type="text" maxlength="100" id="address" placeholder="Dirección" />
+                <input type="button" id="search" onclick="buscar()" value="Buscar" />
+                <input id="coords" asp-for="rh_cat_domicilio.Coordenadas" class="form-control" />
+
+                <div id='map_canvas' style="height:275px;"></div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="DomicilioP" /> Domicilio Principal
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Pais" class="control-label"></label>
+                <select asp-for="rh_cat_domicilio.Pais" class="form-control" asp-items="ViewBag.IdPais"></select>
+                <span asp-validation-for="rh_cat_domicilio.Pais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Estado" class="control-label"></label>
+                <select asp-for="rh_cat_domicilio.Estado" class="form-control" asp-items="ViewBag.IdEstado"></select>
+                <span asp-validation-for="rh_cat_domicilio.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Municipio" class="control-label"></label>
+                <select asp-for="rh_cat_domicilio.Municipio" class="form-control" asp-items="ViewBag.IdMunicipio"></select>
+                <span asp-validation-for="rh_cat_domicilio.Municipio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Localidad" class="control-label"></label>
+                <select asp-for="rh_cat_domicilio.Localidad" class="form-control" asp-items="ViewBag.IdLocalidad"></select>
+                <span asp-validation-for="rh_cat_domicilio.Localidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Colonia" class="control-label"></label>
+                <select asp-for="rh_cat_domicilio.Colonia" class="form-control" asp-items="ViewBag.IdColonia"></select>
+                <span asp-validation-for="rh_cat_domicilio.Colonia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rh_cat_domicilio.Referencia" class="control-label"></label>
+                <input asp-for="rh_cat_domicilio.Referencia" class="form-control" />
+                <span asp-validation-for="rh_cat_domicilio.Referencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tipo Domicilio</label>
+                <select asp-for="rh_cat_domicilio.TipoDomicilio" class="form-control" asp-items="ViewBag.TipoDom"></select>
+                <span asp-validation-for="rh_cat_domicilio.TipoDomicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ActivoP" /> Activo
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="BorradoP" /> Borrado
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                    <div class="form-group">
+                        <input type="submit" onClick="unlock()" value="Guardar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</form>
+
+
+<div>
+    <a asp-page="./Index" asp-route-id="@Microsoft.AspNetCore.Mvc.Razor.Global.id">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+        function unlock() {
+            document.getElementById("colonia").disabled = false;
+            document.getElementById("localidad").disabled = false;
+            document.getElementById("municipio").disabled = false;
+            document.getElementById("estado").disabled = false;
+            document.getElementById("pais").disabled = false;
+        }
+
+
+        $(document).ready(function () {
+            load_map();
+        });
+
+        var map;
+
+        function load_map() {
+            //AQUI TOMO EL VALOR DEL INPUT DE COORDENADAS
+            var coordenada = document.getElementById("coords").value;
+            
+
+            //ELIMINA LOS PARENTESIS DE LA VARIABLE COORDENADA
+            var nuevacoordenada = coordenada.slice(1, -1);
+           
+
+            //SEPARO LA COORDENADA EN UN ARREGLO
+            var coordenadafinal = nuevacoordenada.split(",");
+            
+
+            //SEPARA LA CADENA DEL INPUT PARA GUARDAR LA COORDENADA CORRESPONDIENTE (lat,lng)
+            var lat1 = coordenadafinal[0];
+            var lng1 = coordenadafinal[1];
+
+         
+            //CONVIERTE LA CADENA DE LA COORDENADA EN NUMERO
+            var lat = Number.parseFloat(lat1);
+            var lng = Number.parseFloat(lng1);
+            
+          
+
+
+            
+
+            var myLatlng = new google.maps.LatLng(lat, lng);
+
+           
+
+            var myOptions = {
+                zoom: 2,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //////
+
+            var markerOptions = { position: myLatlng, draggable: true }
+            var marker = new google.maps.Marker(markerOptions);
+            
+            //////
+            map = new google.maps.Map($("#map_canvas").get(0), myOptions);
+            marker.setMap(map);
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                document.getElementById("coords").value = this.getPosition().toString();
+            });
+        }
+
+
+        function buscar() {
+            var address = $('#address').val();
+
+            // Creamos el Objeto Geocoder
+            var geocoder = new google.maps.Geocoder();
+            // Hacemos la petición indicando la dirección e invocamos la función
+            // geocodeResult enviando todo el resultado obtenido
+            geocoder.geocode({ 'address': address }, geocodeResult);
+
+        }
+
+        function geocodeResult(results, status) {
+            // Verificamos el estado
+            if (status == 'OK') {
+                document.getElementById("coords").value = results[0].geometry.location;
+
+                // Si hay resultados encontrados, centramos y refrescamos el mapa
+                // esto para eliminar cualquier marcador antes puesto
+                var mapOptions = {
+                    center: results[0].geometry.location,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map($("#map_canvas").get(0), mapOptions);
+                // fitBounds acercará el mapa con el zoom adecuado de acuerdo a lo buscado
+                map.fitBounds(results[0].geometry.viewport);
+                // Dibujamos un marcador con la ubicación del primer resultado obtenido
+                var markerOptions = { position: results[0].geometry.location, draggable: true }
+                var marker = new google.maps.Marker(markerOptions);
+                marker.setMap(map);
+                google.maps.event.addListener(marker, 'dragend', function (event) {
+                    document.getElementById("coords").value = this.getPosition().toString();
+                });
+
+            } else {
+                // En caso de no haber resultados o que haya ocurrido un error
+                // lanzamos un mensaje con el error
+                alert("Geocoding no tuvo éxito debido a: " + status);
+            }
+        }
+
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU0IX4143qwqstDtskLAJv_x93PNhOZBY"></script>
+
+}

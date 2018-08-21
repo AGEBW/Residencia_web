@@ -1,0 +1,78 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Id Usuario:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.IdUsuario)
+        </dd>
+        <dt>
+            Fecha Estatus:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.FechaEstatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.seg_usuarios_estatu.Actual):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.Actual)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.seg_usuarios_estatu.Observacion):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.Observacion)
+        </dd>
+        <dt>
+            Fecha Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.FechaReg)
+        </dd>
+        <dt>
+            Ultima Modificación:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que registró:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.UsuarioReg)
+        </dd>
+        <dt>
+            Usuario que modifico:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.UsuarioMod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.seg_usuarios_estatu.Activo):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.Activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.seg_usuarios_estatu.Borrado):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_usuarios_estatu.Borrado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Index" class="btn btn-warning">Atras</a>
+</div>

@@ -1,0 +1,80 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Registro</h2>
+
+<h4>Nueva Dirección Web</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input id="id" type="hidden" asp-for="rh_cat_dir_web.ClaveReferencia" />
+            <input type="hidden" asp-for="rh_cat_dir_web.IdTipoGenDirWeb" value="9" />
+            <div class="form-group">
+                <label class="control-label">Descripción</label>
+                <input asp-for="rh_cat_dir_web.DesDirWeb" class="form-control" />
+                <span asp-validation-for="rh_cat_dir_web.DesDirWeb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tipo de dir web</label>
+                <select asp-for="rh_cat_dir_web.IdGenDirWeb" class="form-control" asp-items="ViewBag.IdTipoDirWeb"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Direccion Web</label>
+                <input asp-for="rh_cat_dir_web.DirWeb" class="form-control" />
+                <span asp-validation-for="rh_cat_dir_web.DirWeb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="DirWebP" /> Dirección web Principal
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Referencia</label>
+                <input asp-for="rh_cat_dir_web.Referencia" class="form-control" />
+                <span asp-validation-for="rh_cat_dir_web.Referencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Usuario Registrado</label>
+                <input asp-for="rh_cat_dir_web.UsuarioReg" class="form-control" />
+                <span asp-validation-for="rh_cat_dir_web.UsuarioReg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Usuario Modificado</label>
+                <input asp-for="rh_cat_dir_web.UsuarioMod" class="form-control" />
+                <span asp-validation-for="rh_cat_dir_web.UsuarioMod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index" class="btn btn-warning" asp-route-id="@Model.IdP" asp-route-control="@Model.Control" asp-route-searchString="@Model.SearchString" asp-route-ap="@Model.Ap" asp-route-am="@Model.Am">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var parametro = getParameterByName('id');
+        $('#id').val(parametro);
+    </script>
+
+}

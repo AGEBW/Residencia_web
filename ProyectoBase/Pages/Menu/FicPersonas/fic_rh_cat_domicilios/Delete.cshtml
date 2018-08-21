@@ -1,0 +1,142 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_domicilios.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Estas seguro que quieren eliminar este domicilio?</h3>
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Domicilio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Domicilio)
+        </dd>
+        <dt>
+            Entre Calle 1:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.EntreCalle1)
+        </dd>
+        <dt>
+            Entre Calle 2:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.EntreCalle2)
+        </dd>
+        <dt>
+            Codigo Postal:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.CodigoPostal)
+        </dd>
+        <dt>
+            Coordenadas:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Coordenadas)
+        </dd>
+        <dt>
+            Principal:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Principal)
+        </dd>
+        <dt>
+            Pais:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Pais)
+        </dd>
+        <dt>
+            Estado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Estado)
+        </dd>
+        <dt>
+            Municipio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Municipio)
+        </dd>
+        <dt>
+            Localidad:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Localidad)
+        </dd>
+        <dt>
+            Colonia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Colonia)
+        </dd>
+        <dt>
+            Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Referencia)
+        </dd>
+        <dt>
+            Clave Referencia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.ClaveReferencia)
+        </dd>
+        <dt>
+            Tipo Domicilio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.TipoDomicilio)
+        </dd>
+        <dt>
+            Fecha de Registro
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.FechaReg)
+        </dd>
+        <dt>
+            Ultima Modifacion:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que registró:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.UsuarioReg)
+        </dd>
+        <dt>
+            Ultimo que modifico:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.UsuarioMod)
+        </dd>
+        <dt>
+            Activo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Activo)
+        </dd>
+        <dt>
+            Borrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rh_cat_domicilio.Borrado)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="rh_cat_domicilio.IdDomicilio" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-page="./Index" asp-route-id="@Microsoft.AspNetCore.Mvc.Razor.Global.id" class="btn btn-warning">Regresar</a>
+    </form>
+</div>

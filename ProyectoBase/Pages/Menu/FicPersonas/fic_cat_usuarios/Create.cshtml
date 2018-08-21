@@ -1,0 +1,49 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Registro</h2>
+
+<h4>Nuevo Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Id Persona</label>
+                <select id="personas" asp-for="cat_usuario.IdPersona" class="form-control" asp-items="ViewBag.IdPersona"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Usuario</label>
+                <input asp-for="cat_usuario.Usuario" class="form-control" />
+                <span class="text-danger">@ViewBag.Error</span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ExpiraP" /> Expira
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">No. de intentos maximos</label>
+                <input asp-for="cat_usuario.Numintentos" class="form-control" min="1" value="1"/>
+                <span asp-validation-for="cat_usuario.UsuarioMod" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Registrar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index" class="btn btn-warning">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,188 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .table {
+        font: 800;
+    }
+
+    .titulos {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        
+    }
+
+    .rfc {
+        text-align: center;
+    }
+
+    .contTabla {
+      
+    }
+</style>
+
+<h2>Usuario</h2>
+<div class="col-lg-6">
+    <form>
+        <input type="text" style="height:30px; border-radius:5px" asp-for="search">
+        <input type="submit" class="btn-danger" style="border-radius:5px" value="Filtrar" />
+    </form>
+</div>
+<p>
+    <a asp-page="Create" class="btn btn-danger">Registrar un nuevo usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="rfc">
+                <div>Id Persona</div>
+            </th>
+            <th class="rfc">
+                @Html.DisplayNameFor(model => model.cat_usuario[0].Usuario)
+            </th>
+            <th class="rfc">
+                @Html.DisplayNameFor(model => model.cat_usuario[0].Expira)
+            </th>
+            <th class="rfc">
+                @Html.DisplayNameFor(model => model.cat_usuario[0].Conectado)
+            </th>
+            <th class="rfc">
+                <div>Fecha Alta</div>
+            </th>
+            <th class="rfc">
+                <div>No Intentos</div>
+            </th>
+            <th class="rfc">
+                <div>Fecha de registro</div>
+            </th>
+            <th class="rfc">
+                <div>Ultima Modificación</div>
+            </th>
+            <th class="rfc">
+                Usuario que modifico
+            </th>
+            <th class="rfc">
+                Usuario que registró
+            </th>
+            <th class="rfc">
+                @Html.DisplayNameFor(model => model.cat_usuario[0].Activo)
+            </th>
+            <th class="rfc">
+                @Html.DisplayNameFor(model => model.cat_usuario[0].Borrado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.cat_usuario)
+        {
+            <tr>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.IdPersona)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.Expira)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.Conectado)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.FechaAlta)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.Numintentos)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.FechaReg)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.FechaUltMod)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.UsuarioReg)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.UsuarioMod)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td class="rfc">
+                    @Html.DisplayFor(modelItem => item.Borrado)
+                </td>
+                <td class="rfc">
+                    <div class="dropdown" style="float:right;">
+                        <button class="dropbtn">Opciones</button>
+                        <div class="dropdown-content">
+                            <a asp-page="./Edit" asp-route-id="@item.IdUsuario">Editar</a>
+                            <a asp-page="./Details" asp-route-id="@item.IdUsuario">Detalles</a>
+                            <a asp-page="./Delete" asp-route-id="@item.IdUsuario">Borrar</a>
+                            <a asp-page="../fic_seg_expira_clave/Index" asp-route-id="@item.IdUsuario" asp-route-usuario="@item.Usuario">Contraseñas</a>
+                            <a asp-page="../fic_seg_usuarios_estatus/Index" asp-route-id="@item.IdUsuario" asp-route-usuario="@item.Usuario">Estatus</a>
+                            <a asp-page="../fic_seg_usuarios_grupos/Index" asp-route-id="@item.IdUsuario" asp-route-usuario="@item.Usuario">Grupos</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!--<p>@ViewBag.MostrarTodos</p>-->
+
+
+<style>
+    .dropbtn {
+        background-color: #E32F2F;
+        color: white;
+        padding: 5px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        height: 30px;
+        width: 90px;
+    }
+
+    .body {
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 90px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #FBB6B6;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #C62121;
+    }
+</style>

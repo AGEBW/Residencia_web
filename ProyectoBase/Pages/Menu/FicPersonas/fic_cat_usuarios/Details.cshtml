@@ -1,0 +1,97 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_cat_usuarios.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Id Persona: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.IdPersona)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Usuario):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Usuario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Expira):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Expira)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Conectado):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Conectado)
+        </dd>
+        <dt>
+            Fecha Alta: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.FechaAlta)
+        </dd>
+        <dt>
+            Numero de Intento:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Numintentos)
+        </dd>
+        <dt>
+            Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.FechaReg)
+        </dd>
+        <dt>
+            Ultima Modificacion:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que lo registro: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.UsuarioReg)
+        </dd>
+        <dt>
+            Usuario que modifico:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.UsuarioMod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Activo):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Borrado):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Borrado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_usuario.Contraseña):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cat_usuario.Contraseña)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.cat_usuario.IdUsuario" class="btn btn-success">Editar</a> 
+    <a asp-page="./Index" class="btn btn-warning">Atras</a>
+</div>

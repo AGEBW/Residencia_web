@@ -1,0 +1,164 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Añadir un Grupo</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <input id="id" type="hidden" asp-for="seg_usuarios_grupo.IdUsuario" class="form-control" />
+                <span asp-validation-for="seg_usuarios_grupo.IdUsuario" class="text-danger"></span>
+            </div>
+                <input type="hidden" id="grupos" class="form-control" asp-for="seg_usuarios_grupo.IdTipoGrupo" value="4"/>
+            
+            <div class="form-group">
+
+                <label asp-for="seg_usuarios_grupo.IdGrupo" class="control-label"></label>
+                <select asp-for="seg_usuarios_grupo.IdGrupo"id="grupos2" class="form-control" asp-items="ViewBag.IdGrupos"></select>
+                <span>@ViewBag.Error</span>
+                
+
+
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="seg_usuarios_grupo.FechaReg" class="control-label"></label>
+                <input id="inicio" onBlur="comparaFechas()" asp-for="seg_usuarios_grupo.FechaReg"   class="form-control" />
+                <span asp-validation-for="seg_usuarios_grupo.FechaReg" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="seg_usuarios_grupo.FechaUltMod" class="control-label"></label>
+                <input id="fin" onBlur="comparaFechas()" asp-for="seg_usuarios_grupo.FechaUltMod" class="form-control" />
+                <div style="display:none;" class="errorF1" id="errorF1">Esta fecha no puede ser menor que la de registro.</div>
+                <span asp-validation-for="seg_usuarios_grupo.FechaUltMod" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="seg_usuarios_grupo.UsuarioReg" class="control-label"></label>
+                <input asp-for="seg_usuarios_grupo.UsuarioReg" class="form-control" />
+                <span asp-validation-for="seg_usuarios_grupo.UsuarioReg" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="seg_usuarios_grupo.UsuarioMod" class="control-label"></label>
+                <input asp-for="seg_usuarios_grupo.UsuarioMod" class="form-control" />
+                <span asp-validation-for="seg_usuarios_grupo.UsuarioMod" class="text-danger"></span>
+            </div>
+            <!-- <div class="form-group">
+          <label asp-for="seg_usuarios_grupo.Activo" class="control-label"></label>
+          <input asp-for="seg_usuarios_grupo.Activo" class="form-control" />
+          <span asp-validation-for="seg_usuarios_grupo.Activo" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+          <label asp-for="seg_usuarios_grupo.Borrado" class="control-label"></label>
+          <input asp-for="seg_usuarios_grupo.Borrado" class="form-control" />
+          <span asp-validation-for="seg_usuarios_grupo.Borrado" class="text-danger"></span>
+      </div>
+
+        -->
+            <div class="form-group">
+                <input type="submit" id="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var parametro = getParameterByName('id');
+        $('#id').val(parametro);
+
+
+        function getTipoGrupos(name) {
+            name = $('#grupos').val();
+            
+            $('#grupo').val(name);
+        }
+
+        function getGrupos(name) {
+            name = $('#grupos2').val();
+            $('#grupo2').val(name);
+        }
+
+
+        function comparaFechas() {
+            
+            var errorFecha = document.getElementById('errorF1');
+
+            var fechaInicio = document.getElementById('inicio');
+            var año1 = parseInt(fechaInicio.value.split("-", 1));
+            var mes1 = parseInt(fechaInicio.value.substring(5, 7));
+            var dia1 = parseInt(fechaInicio.value.substring(8, 11));
+
+
+            var fechaFin = document.getElementById('fin');
+            var año2 = parseInt(fechaFin.value.split("-", 1));
+            var mes2 = parseInt(fechaFin.value.substring(5, 7));
+            var dia2 = parseInt(fechaFin.value.substring(8, 11));
+
+
+
+
+
+            if (año2 > año1) {
+                submit.disabled = false;
+                errorFecha.style.display = 'none';
+            }
+            else if (año2 == año1) {
+                if (mes2 > mes1) {
+                    submit.disabled = false;
+                    errorFecha.style.display = 'none';
+                }
+                else if (mes2 == mes1) {
+                    if (dia2 > dia1) {
+                        submit.disabled = false;
+                        errorFecha.style.display = 'none';
+                    }
+                    else if (dia2 <= dia1) {
+
+                        submit.disabled = true;
+                        errorFecha.style.display = 'block';
+                    }
+                }
+            }
+            else if (año2 < año1) {
+                submit.disabled = true;
+                errorFecha.style.display = 'block';
+            }
+
+
+
+
+        }
+
+
+    </script>
+}
+
+    <style>
+        .error1 {
+            color: brown;
+        }
+
+        .errorF1 {
+            color: brown;
+        }
+    </style>

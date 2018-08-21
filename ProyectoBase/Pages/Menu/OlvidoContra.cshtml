@@ -1,0 +1,51 @@
+﻿@page
+@model Pages.Menu.OlvidoContraModel
+@{
+    ViewData["Title"] = "OlvidoContra";
+}
+
+
+<div class="col-lg-6 col-md-6">
+    <h3>OLVIDASTE TU CONTRASEÑA?</h3>
+    <form>
+        <label class="control-label">Usuario a recuperar contraseña: </label>
+        <input type="text" asp-for="usuario" class="form-control" />
+        <span class="text-danger">@ViewBag.Error</span>
+        <br />
+        <label class="control-label">Ingresa tu correo</label>
+        <input type="text" asp-for="correo" class="form-control" />
+        <br />
+        <input type="submit" value="Enviar" class="btn btn-default" onclick="rand_code()" />
+        <br />
+        <br />
+        <br />
+    </form>
+</div>
+
+
+
+
+    <!--<button type="button" class="btn btn-default" data-dismiss="modal" onclick="alerta()">Enviar Clave</button>-->
+
+
+    <script>
+
+        caracteres = "123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNM";
+        longitud = 6;
+
+
+        function rand_code(chars, lon) {
+            code = "";
+            for (x = 0; x < lon; x++) {
+                rand = Math.floor(Math.random() * chars.length);
+                code += chars.substr(rand, 1);
+            }
+            return code;
+        }
+
+        function alerta() {
+            alert(rand_code(caracteres, longitud));
+        }
+
+
+    </script>

@@ -1,0 +1,91 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Información</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Id Usuario:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.IdUsuario)
+        </dd>
+        <dt>
+            Expira Inicio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.FechaExpiraIni)
+        </dd>
+        <dt>
+            Expira Fin:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.FechaExpiraFin)
+        </dd>
+        <dt>
+            Actual:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.Actual)
+        </dd>
+        <dt>
+            Clave:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.Clave)
+        </dd>
+        <dt>
+            Clave Auto Sys:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.ClaveAutoSys)
+        </dd>
+        <dt>
+            Fecha Registro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.FechaReg)
+        </dd>
+        <dt>
+            Ultimo Modificación:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.FechaUltMod)
+        </dd>
+        <dt>
+            Usuario que registró:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.UsuarioReg)
+        </dd>
+        <dt>
+            Usuario que modifico:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.UsuarioMod)
+        </dd>
+        <dt>
+            Activo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.Activo)
+        </dd>
+        <dt>
+            Borrado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seg_expira_clave.Borrado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.seg_expira_clave.IdClave" class="btn btn-success">Editar</a> |
+    <a asp-page="./Index" class="btn btn-warning">Atras</a>
+</div>

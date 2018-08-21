@@ -1,0 +1,167 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Telefonos</h2>
+
+<label>@Model.id </label> <label>@Microsoft.AspNetCore.Mvc.Razor.Global.control </label> <label>@Microsoft.AspNetCore.Mvc.Razor.Global.nombre </label> <label>@Microsoft.AspNetCore.Mvc.Razor.Global.ap </label> <label>@Microsoft.AspNetCore.Mvc.Razor.Global.am </label>
+<p>
+    <a asp-page="Create" class="btn btn-danger" asp-route-id="@Microsoft.AspNetCore.Mvc.Razor.Global.id">Nuevo Telefono</a>
+</p>
+
+<div class="row">
+    <div class="col-lg-6">
+        <form>
+            <input type="text" style="height:30px; border-radius:5px" asp-for="search">
+            <input type="submit" class="btn-danger" style="border-radius:5px" value="Filtrar" />
+
+            <input type="text" style="height:30px; border-radius:5px" asp-for="id" hidden>
+
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <div>Codigo Pais</div>
+            </th>
+            <th>
+                <div>No. Telefono</div>
+            </th>
+            <th>
+                <div>No. Extensión</div>
+            </th>
+            <th>
+                <div>Principal</div>
+            </th>
+            <th>
+                <div>Referencia</div>
+            </th>
+            <th>
+                <div>Fecha de Registro</div>
+            </th>
+            <th>
+                <div>Ultima Modificación</div>
+            </th>
+            <th>
+                <div>Usuario Registrado</div>
+            </th>
+            <th>
+                <div>Usuario Modificado</div>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rh_cat_telefono[0].Activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rh_cat_telefono[0].Borrado)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.rh_cat_telefono)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodPais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumTelefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumExtencion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Principal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Referencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaReg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaUltMod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioReg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioMod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Borrado)
+                </td>
+                <td>
+                    <div class="dropdown" style="float:right;">
+                        <button class="dropbtn">Opciones</button>
+                        <div class="dropdown-content">
+                            <a asp-page="./Edit" asp-route-id="@item.IdTelefono" asp-route-idP="@Model.id" asp-route-control="@Model.control" asp-route-searchString="@Model.searchString" asp-route-ap="@Model.ap" asp-route-am="@Model.am">Editar</a>
+                            <a asp-page="./Details" asp-route-id="@item.IdTelefono" asp-route-idP="@Model.id" asp-route-control="@Model.control" asp-route-searchString="@Model.searchString" asp-route-ap="@Model.ap" asp-route-am="@Model.am">Detalles</a>
+                            <a asp-page="./Delete" asp-route-id="@item.IdTelefono" asp-route-idP="@Model.id" asp-route-control="@Model.control" asp-route-searchString="@Model.searchString" asp-route-ap="@Model.ap" asp-route-am="@Model.am">Borrar</a>
+                        </div>
+                    </div>
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+
+    .dropbtn {
+        background-color: #E32F2F;
+        color: white;
+        padding: 5px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        height: 30px;
+        width: 90px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 90px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #FBB6B6;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #C62121;
+    }
+</style>

@@ -1,0 +1,221 @@
+﻿@page
+@model ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Clave</h2>
+
+<h4>Nueva Clave</h4>
+<hr />
+
+<form method="post">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="seg_expira_clave.IdUsuario" id="id"/>
+            <input type="hidden" asp-for="seg_expira_clave.UsuarioReg"/>
+            <input type="hidden" asp-for="seg_expira_clave.UsuarioMod"/>
+
+            <div class="form-group">
+                <label class="control-label">Contraseña</label>
+                <input id="pass" type="password" onBlur="comparaContras()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Confirmar contraseña</label>
+                <input id="pass2" type="password" asp-for="seg_expira_clave.Clave" onBlur="comparaContras()" class="form-control" />
+                <div class="error1" id="error1" style="display:none;">Contraseñas no coinciden</div>
+                <span class="text-danger">
+                    @ViewBag.Error
+                </span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input id="auto" asp-for="ClaveSys" /> Contraseña generada por el sistema
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Expira Inicio</label>
+                <input id="inicio" asp-for="seg_expira_clave.FechaExpiraIni" onBlur="comparaFechas()" class="form-control" />
+                <span asp-validation-for="seg_expira_clave.FechaExpiraIni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Expira Fin</label>
+                <input id="fin" onBlur="comparaFechas()" asp-for="seg_expira_clave.FechaExpiraFin" class="form-control" />
+                <div style="display:none;" class="errorF1" id="errorF1">La fecha de expiracion no puede ser menor que la de registro.</div>
+                <span asp-validation-for="seg_expira_clave.FechaExpiraFin" class="text-danger"></span>
+            </div>
+        </div>
+                <div class="form-group">
+                    <input  disabled="false" id="submit" type="submit" value="Registrar" class="btn btn-success" onclick="acept()"/>
+                </div>
+        </div>
+
+</form>
+
+
+<div>
+    <a asp-page="Index" class="btn btn-warning">Atras</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        var au = document.getElementById('auto');
+        au.addEventListener("change", automatico, false);
+
+        function automatico() {
+
+            var au = document.getElementById('auto');
+
+            var contra = document.getElementById('pass');
+            var contra2 = document.getElementById('pass2');
+
+
+
+
+            if (au.checked) {
+
+                var caracteres = "123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+                "123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNM";
+                var longitud = 6;
+                
+                var code = "";
+                for (x = 0; x < longitud; x++) {
+                    rand = Math.floor(Math.random() * caracteres.length);
+                    code += caracteres.substr(rand, 1);
+                };
+                
+                contra.value = code;
+                contra2.value = code;
+
+                contra.readOnly = true;
+                contra2.readOnly = true;
+
+                comparaContras();
+            }
+            else {
+
+                contra.readOnly = false;
+                contra2.readOnly = false;
+
+                contra.value = null;
+                contra2.value = null;
+                submit.disabled = true;
+            }
+        }
+
+        function acept() {
+            var contra = document.getElementById('pass');
+            var contra2 = document.getElementById('pass2');
+
+            contra.disabled = false;
+            contra2.disabled = false;
+
+        }
+
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var parametro = getParameterByName('id');
+        $('#id').val(parametro);
+
+        function comparaContras() {
+
+            var contra = document.getElementById('pass');
+            var contra2 = document.getElementById('pass2');
+            var submit = document.getElementById('submit');
+            var errorContras = document.getElementById('error1');
+
+            if (contra2.value=="") {
+
+
+            }
+            else { 
+                if (contra.value == contra2.value) {
+                    submit.disabled = false;
+                    errorContras.style.display = 'none';
+                }
+                else {
+                    
+                    submit.disabled = true;
+                    errorContras.style.display = 'block';
+                }
+
+            }
+        }
+
+        function comparaFechas() { 
+
+            var errorFecha = document.getElementById('errorF1');
+
+            var fechaInicio = document.getElementById('inicio');
+            var año1 = parseInt( fechaInicio.value.split("-", 1));
+            var mes1 = parseInt(fechaInicio.value.substring(5, 7));
+            var dia1 = parseInt(fechaInicio.value.substring(8, 11));
+           
+
+            var fechaFin = document.getElementById('fin');
+            var año2 = parseInt(fechaFin.value.split("-", 1));
+            var mes2 = parseInt(fechaFin.value.substring(5, 7));
+            var dia2 = parseInt( fechaFin.value.substring(8, 11));
+
+          
+
+
+
+            if (año2 > año1) {
+                submit.disabled = false;
+                errorFecha.style.display = 'none';
+            }
+            else if (año2 == año1) {
+                if (mes2 > mes1) {
+                submit.disabled = false;
+                    errorFecha.style.display = 'none'; }
+                else if (mes2 == mes1) {
+                    if (dia2 > dia1) {
+                    submit.disabled = false;
+                        errorFecha.style.display = 'none';}
+                    else if (dia2 <= dia1) {
+                        
+                        submit.disabled = true;
+                        errorFecha.style.display = 'block';
+                    }
+                 }
+            }
+            else if (año2<año1) { 
+                submit.disabled = true;
+                errorFecha.style.display = 'block';
+            }
+             
+           
+
+            
+        }
+
+       
+
+    </script>
+
+ 
+}
+
+<style>
+    .error1 {
+        color:brown;
+    }
+
+    .errorF1 {
+        color: brown;
+    }
+</style>

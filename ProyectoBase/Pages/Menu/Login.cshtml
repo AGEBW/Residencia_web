@@ -1,0 +1,182 @@
+﻿@page
+@model Pages.Menu.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="col-lg-5 coca1">
+        <img class="media-object coca" src="~/images/Coca-Cola-Logo.png" border="0" width="300" height="300" alt="...">
+    </div>
+</div>
+
+<style>
+    .coca {
+        margin-left: 50px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .tit{
+        margin-top:40px;
+    }
+</style>
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+    <h2>Iniciar Sesion</h2>
+
+    <form>
+        <table>
+            <tr class="div">
+                <td>
+                    <label class="control-label">Usuario</label>
+                    <input type="text" asp-for="Usuario" class="form-control" autocomplete="off"/>
+                </td>
+
+            </tr>
+            <tr class="div">
+                <td>
+                    <label class="control-label tit">Contraseña</label>
+                    <input type="password" asp-for="Contraseña" class="form-control" />
+
+                </td>
+            </tr>
+        </table>
+        <a asp-page="./OlvidoContra">Olvidaste tu contraseña?</a>
+        <br />
+        <a asp-page="./Registro">Registrar Usuario</a>
+        <br />
+        <input type="submit" value="Login" class="btn btn-default" id="open" />
+        <label class="control-label">Intentos: @Microsoft.AspNetCore.Mvc.Razor.Global.intentos</label>
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.usuario_incorrecto == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> El usuario introducido es incorrecto.
+            </div>
+
+        }
+
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_incorrecta == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> La contraseña introducida es incorrecta.
+            </div>
+
+        }
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_no_actual == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> La contraseña introducida no es la actual.
+            </div>
+
+        }
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseñas_vacias == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Las contraseñas estan vacias.
+            </div>
+
+        }
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseñas_no_coinciden == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Las contraseñas no coinciden.
+            </div>
+
+        }
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_igual_anterior == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> La contraseña no puede ser igual a la anterior.
+            </div>
+
+        }
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.bloqueado_por_intentos == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> El Usuario ha sido bloqueado por intentos.
+            </div>
+
+        }
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.intentos_superados == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Ha exedido el numero de intentos permitidos.
+            </div>
+
+        }
+
+        @if (Microsoft.AspNetCore.Mvc.Razor.Global.estatus_no_activo == true)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong> El usuario no se encuentra activo.
+            </div>
+
+        }
+
+    </form>
+</div>
+
+@if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_sistema == true)
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> Su contraseña esta agregada por el sistema.
+        <p></p>
+        <button class="btn btn-default" data-toggle="modal" data-target="#myModal">Introducir nueva contraseña</button>
+    </div>
+}
+
+@if (Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_expiro == true)
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> La contraseña introducida ya expiro.
+        <p></p>
+        <button class="btn btn-default" data-toggle="modal" data-target="#myModal">Introducir nueva contraseña</button>
+    </div>
+}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Actualizar contraseña</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label">Contraseña</label>
+                        <input asp-for="Contraseña_vieja" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Confirmar Contraseña</label>
+                        <input asp-for="Contraseña_nueva" class="form-control" />
+                    </div>
+                    <input asp-for="Usuario" class="form-control" type="hidden" />
+                    <input asp-for="Contraseña" class="form-control" type="hidden" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" asp-route-id="1">Guardar</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .div {
+        padding: 10px;
+    }
+</style>
