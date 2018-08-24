@@ -6,21 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
 {
     public class CreateModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public CreateModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public CreateModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public seg_usuarios_grupo seg_usuarios_grupo { get; set; }
+        public seg_usuarios_grupos seg_usuarios_grupo { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -50,17 +50,17 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
         }
 
         [BindProperty]
-        public seg_usuarios_grupo grupo { get; set; }
+        public seg_usuarios_grupos grupo { get; set; }
 
 
         public async Task<IActionResult> OnPostAsync()
         {
             
             seg_usuarios_grupo.FechaReg = DateTime.Now;
-            seg_usuarios_grupo.FechaUltMod = DateTime.Now;
+            //seg_usuarios_grupo.FechaUltMod = DateTime.Now;
             seg_usuarios_grupo.Activo = "S";
             seg_usuarios_grupo.Borrado = "N";
-            seg_usuarios_grupo.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
+            //seg_usuarios_grupo.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
             seg_usuarios_grupo.UsuarioReg = Microsoft.AspNetCore.Mvc.Razor.Global.name;
 
             grupo = await _context.seg_usuarios_grupos.SingleOrDefaultAsync(m => m.IdGrupo == seg_usuarios_grupo.IdGrupo && m.IdUsuario == seg_usuarios_grupo.IdUsuario);

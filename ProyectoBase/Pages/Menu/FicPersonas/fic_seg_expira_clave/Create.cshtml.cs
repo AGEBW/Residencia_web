@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave
 {
     public class CreateModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public CreateModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public CreateModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave
         }
 
         [BindProperty]
-        public seg_expira_clave seg_expira_clave { get; set; }
+        public seg_expira_claves seg_expira_clave { get; set; }
 
         public async Task<IActionResult> OnPostAsync(bool ClaveSys)
         {
@@ -42,11 +42,11 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave
             }
 
             seg_expira_clave.FechaReg = DateTime.Now;
-            seg_expira_clave.FechaUltMod = DateTime.Now;
+            //seg_expira_clave.FechaUltMod = DateTime.Now;
             seg_expira_clave.Activo = "S";
             seg_expira_clave.Borrado = "N";
             seg_expira_clave.Actual = "S";
-            seg_expira_clave.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
+            //seg_expira_clave.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
             seg_expira_clave.UsuarioReg = Microsoft.AspNetCore.Mvc.Razor.Global.name;
 
             if (ClaveSys)

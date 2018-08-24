@@ -36,7 +36,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_domicilios
             Ap = ap;
             Am = am;
             SearchString = searchString;
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }

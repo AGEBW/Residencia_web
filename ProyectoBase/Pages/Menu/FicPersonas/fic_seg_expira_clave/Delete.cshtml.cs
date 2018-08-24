@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave
 {
     public class DeleteModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public DeleteModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public DeleteModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public seg_expira_clave seg_expira_clave { get; set; }
+        public seg_expira_claves seg_expira_clave { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

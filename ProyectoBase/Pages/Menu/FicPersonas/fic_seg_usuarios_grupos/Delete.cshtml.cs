@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
 {
     public class DeleteModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public DeleteModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public DeleteModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public seg_usuarios_grupo seg_usuarios_grupo { get; set; }
+        public seg_usuarios_grupos seg_usuarios_grupo { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +28,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
                 return NotFound();
             }
 
-            seg_usuarios_grupo = await _context.seg_usuarios_grupos.SingleOrDefaultAsync(m => m.IdsegGrupo == id);
+            seg_usuarios_grupo = await _context.seg_usuarios_grupos.SingleOrDefaultAsync(m => m.IdGrupo == id);
 
             if (seg_usuarios_grupo == null)
             {

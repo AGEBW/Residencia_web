@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
 {
     public class EditModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public EditModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public EditModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
         public bool BorradoP { get; set; }
 
         [BindProperty]
-        public rh_cat_telefono rh_cat_telefono { get; set; }
+        public rh_cat_telefonos rh_cat_telefono { get; set; }
 
         public string Control { get; set; }
         public int IdP { get; set; }

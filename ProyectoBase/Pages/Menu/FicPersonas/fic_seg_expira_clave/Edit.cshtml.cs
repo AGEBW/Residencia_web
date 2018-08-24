@@ -6,21 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave
 {
     public class EditModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public EditModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public EditModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public seg_expira_clave seg_expira_clave { get; set; }
+        public seg_expira_claves seg_expira_clave { get; set; }
 
         public bool ActualP { get; set; }
         public bool ClaveSys { get; set; }
@@ -81,8 +81,8 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_expira_clave
 
         public async Task<IActionResult> OnPostAsync(bool ActualP, bool ActivoP, bool BorradoP, bool ClaveSys)
         {
-            seg_expira_clave.FechaUltMod = DateTime.Now;
-            seg_expira_clave.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
+            //seg_expira_clave.FechaUltMod = DateTime.Now;
+            //seg_expira_clave.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
 
             if (!ModelState.IsValid)
             {

@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
 {
     public class CreateModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public CreateModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public CreateModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -42,15 +42,15 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
         }
 
         [BindProperty]
-        public seg_usuarios_estatu seg_usuarios_estatu { get; set; }
+        public seg_usuarios_estatus seg_usuarios_estatu { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
             seg_usuarios_estatu.FechaReg = DateTime.Now;
-            seg_usuarios_estatu.FechaUltMod = DateTime.Now;
+            //seg_usuarios_estatu.FechaUltMod = DateTime.Now;
             seg_usuarios_estatu.Activo = "S";
             seg_usuarios_estatu.Borrado = "N";
-            seg_usuarios_estatu.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
+            //seg_usuarios_estatu.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
             seg_usuarios_estatu.UsuarioReg = Microsoft.AspNetCore.Mvc.Razor.Global.name;
             seg_usuarios_estatu.Actual = "S";
             seg_usuarios_estatu.FechaEstatus = DateTime.Now;
@@ -60,7 +60,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
             await _context.SaveChangesAsync();
 
             var cambiarPrincipal = await _context.seg_usuarios_estatus.SingleOrDefaultAsync
-                (m => m.IdCtrlEstatus != seg_usuarios_estatu.IdCtrlEstatus && m.Actual == "S" && m.IdUsuario == seg_usuarios_estatu.IdUsuario);
+                (m => m.IdCrtlEstatus != seg_usuarios_estatu.IdCrtlEstatus && m.Actual == "S" && m.IdUsuario == seg_usuarios_estatu.IdUsuario);
             //Si es nulo significa que aun no registraban ningun domicilio como principal
             if (cambiarPrincipal != null)
             {

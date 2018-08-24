@@ -6,21 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
 {
     public class EditModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public EditModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public EditModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public seg_usuarios_estatu seg_usuarios_estatu { get; set; }
+        public seg_usuarios_estatus seg_usuarios_estatu { get; set; }
 
         
         
@@ -33,7 +33,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
                 return NotFound();
             }
 
-            seg_usuarios_estatu = await _context.seg_usuarios_estatus.SingleOrDefaultAsync(m => m.IdCtrlEstatus == id);
+            seg_usuarios_estatu = await _context.seg_usuarios_estatus.SingleOrDefaultAsync(m => m.IdCrtlEstatus == id);
 
             if (seg_usuarios_estatu == null)
             {
@@ -89,8 +89,8 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
 
         public async Task<IActionResult> OnPostAsync()
         {
-            seg_usuarios_estatu.FechaUltMod = DateTime.Now;
-            seg_usuarios_estatu.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
+            //seg_usuarios_estatu.FechaUltMod = DateTime.Now;
+            //seg_usuarios_estatu.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
 
             if (!ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!seg_usuarios_estatuExists(seg_usuarios_estatu.IdCtrlEstatus))
+                if (!seg_usuarios_estatuExists(seg_usuarios_estatu.IdCrtlEstatus))
                 {
                     return NotFound();
                 }
@@ -120,7 +120,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_estatus
 
         private bool seg_usuarios_estatuExists(int id)
         {
-            return _context.seg_usuarios_estatus.Any(e => e.IdCtrlEstatus == id);
+            return _context.seg_usuarios_estatus.Any(e => e.IdCrtlEstatus == id);
         }
     }
 }

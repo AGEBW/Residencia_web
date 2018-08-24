@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_domicilios
 {
     public class EditModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public EditModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public EditModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_domicilios
         public bool BorradoP { get; set; }
 
         [BindProperty]
-        public rh_cat_domicilio rh_cat_domicilio { get; set; }
+        public rh_cat_domicilios rh_cat_domicilio { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id, int idP, string searchString, string control, string ap, string am)
         {

@@ -55,7 +55,8 @@ namespace ProyectoBase.Models
         public string RFC { get; set; }
         [StringLength(25)]
         public string CURP { get; set; }
-        public Nullable<DateTime> FechaNac { get; set; }
+        //public Nullable<DateTime> FechaNac { get; set; }
+        public DateTime FechaNac { get; set; }
         [StringLength(1)]
         public string TipoPersona { get; set; }
         [StringLength(1)]
@@ -807,5 +808,205 @@ namespace ProyectoBase.Models
         public string ApMaterno { get; set; }
         //DE LA TABLA -> cat_periodos
         public string DesPeriodo { get; set; }
+    }
+    public class cat_estados
+    {
+        [Key]
+        [Required]
+        public int IdEstados{ get; set;}
+        //De la Tabla -> Paises
+        [ForeignKey("cat_paises")]
+        [Required]
+        public int IdPais { get; set;}
+
+        [StringLength(5)]
+        public string ClaveEstado { get; set; }
+
+        public string DesEstado { get; set;}
+
+        [StringLength(5)]
+        public string Abreviatura { get; set; }
+   
+        public string DesCapital { get; set; }
+        
+        [StringLength(1)]
+        public string Activo { get; set;}
+
+        public DateTime FechaReg { get; set; }
+
+        public string UsuarioReg { get; set; }
+
+        public DateTime FechaUltMod { get; set; }
+
+        public string UsuarioMod { get; set; }
+
+        [StringLength(1)]
+        public string Borrado { get; set; }
+    }
+
+    public class cat_colonias
+    {
+      [Key]
+      [Required]
+      public int IdColonia { get; set; }
+      [Required]
+      [ForeignKey("cat_paises")]
+      public int IdPais { get; set; }
+      [Required]
+      [ForeignKey("cat_estados")]
+      public int IdEstado { get; set; }
+      [Required]
+      [ForeignKey("cat_municipios")]
+      public int IdMunicipio { get; set; }
+      [Required]
+      [ForeignKey("cat_localidades")]
+      public int IdLocalidad { get; set; }
+      [StringLength(10)]
+      public string ClaveColonia { get; set; }
+      public string DesColonia { get; set; }
+      [StringLength(10)]
+      public string CodPostal { get; set; }
+      [StringLength(20)]
+      public string TipoAsentamiento { get; set; }
+      [StringLength(1)]
+      public string Activo { get; set; }
+      public DateTime FechaReg { get; set; }
+      [StringLength(20)]
+      public string UsuarioReg { get; set; }
+      public DateTime FechaUltMod { get; set; }
+      [StringLength(20)]
+      public string UsuarioMod { get; set; }
+      [StringLength(1)]
+      public string Borrado { get; set; }
+    }
+
+    public class cat_localidades
+    {
+    [Required]
+    [Key]
+    public int IdLocalidad { get; set; }
+    [Required]
+    [ForeignKey("cat_paises")]
+    public int IdPais { get; set; }
+    [Required]
+    [ForeignKey("cat_estados")]
+    public int IdEstado { get; set; }
+    [Required]
+    [ForeignKey("cat_municipios")]
+    public int IdMunicipio { get; set; }
+    [StringLength(10)]
+    public string ClaveLocalidad { get; set; }
+    public string DesLocalidad { get; set; }
+    [StringLength(20)]
+    public string GradoMarginacion { get; set; }
+    [StringLength(20)]
+    public string Ambito { get; set; }
+    [StringLength(1)]
+    public string Activo { get; set; }
+    public DateTime FechaReg { get; set; }
+    [StringLength(20)]
+    public string UsuarioReg { get; set; }
+    public DateTime FechaUltMod { get; set; }
+    [StringLength(20)]
+    public string UsuarioMod { get; set; }
+    [StringLength(1)]
+    public string Borrado { get; set; }
+    }
+   public class cat_paises
+    {
+    [Key]
+    [Required]
+    public int IdPais { get; set; }
+    [StringLength(5)]
+    public string ClavePais { get; set; }
+    public string DesPais { get; set; }
+    [StringLength(1)]
+    public string Activo { get; set; }
+    public string FechaReg { get; set; }
+    public string UsuarioReg { get; set; }
+    public DateTime FechaUltMod { get; set; }
+    public string UsuarioMod { get; set; }
+    [StringLength(1)]
+    public string Borrado { get; set; }
+    }
+
+    public class cat_municipios
+    {
+    [Key]
+    [Required]
+    public int IdMunicipio { get; set; }
+    [ForeignKey("cat_paises")]
+    [Required]
+    public int IdPais { get; set; }
+    [ForeignKey("cat_estados")]
+    [Required]
+    public int IdEstado { get; set; }
+    [StringLength(5)]
+    public string ClaveMunicipio { get; set; }
+    public string DesMunicipio { get; set; }
+    [StringLength(1)]
+    public string Activo { get; set; }
+    public DateTime FechaReg { get; set; }
+    public string UsuarioReg { get; set; }
+    public DateTime FechaUltMod { get; set; }
+    public string UsuarioMod { get; set; }
+    [StringLength(1)]
+    public string Borrado { get; set; }
+    }
+
+  public class rh_cat_domicilios
+    {
+    [Key]
+    [Required]
+    public int IdDomicilio { get; set; }
+    public string Domicilio { get; set; }
+    public string EntreCalle1 { get; set; }
+    public string EntreCalle2 { get; set; }
+    [StringLength(10)]
+    public string CodigoPostal { get; set; }
+    public string Coordenadas { get; set; }
+    [StringLength(1)]
+    public string Principal { get; set; }
+    public int IdTipoGenDom { get; set; }
+    public int IdGenDom { get; set; }
+    public string Pais { get; set; }
+    public string Estado { get; set; }
+    public string Municipio { get; set; }
+    public string Localidad { get; set; }
+    public string Colonia { get; set; }
+    public string Referencia { get; set; }
+    public string ClaveReferencia { get; set; }
+    [StringLength(1)]
+    public string TipoDomicilio { get; set; }
+    public DateTime FechaReg { get; set; }
+    public DateTime FechaUltMod { get; set; }
+    public string UsuarioReg { get; set; }
+    public string UsuarioMod { get; set; }
+    [StringLength(1)]
+    public string Activo { get; set; }
+    [StringLength(1)]
+    public string Borrado { get; set; }
+    }
+
+    public class seg_usuarios_grupos
+    {
+    [Key]
+    [Required]
+    public int IdCtrlGrupo { get; set; }
+    [ForeignKey("cat_usuarios")]
+    [Required]
+    public int IdUsuario { get; set; }
+    [ForeignKey("rh_cat_tipo_grupos")]
+    [Required]
+    public int IdTipoGrupo { get; set; }
+    [ForeignKey("rh_cat_grupos")]
+    [Required]
+    public int IdGrupo { get; set; }
+    public DateTime FechaReg { get; set; }
+    public string UsuarioReg { get; set; }
+    [StringLength(1)]
+    public string Activo { get; set; }
+    [StringLength(1)]
+    public string Borrado { get; set; }
     }
 }

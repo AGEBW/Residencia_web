@@ -5,20 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
 {
     public class DetailsModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public DetailsModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public DetailsModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public rh_cat_telefono rh_cat_telefono { get; set; }
+        public rh_cat_telefonos rh_cat_telefono { get; set; }
 
         public string Control { get; set; }
         public int IdP { get; set; }

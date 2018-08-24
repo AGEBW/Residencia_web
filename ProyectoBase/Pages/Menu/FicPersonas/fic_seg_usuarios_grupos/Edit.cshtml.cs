@@ -6,21 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
 {
     public class EditModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public EditModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public EditModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public seg_usuarios_grupo seg_usuarios_grupo { get; set; }
+        public seg_usuarios_grupos seg_usuarios_grupo { get; set; }
 
         public bool ActivoP { get; set; }
         public bool BorradoP { get; set; }
@@ -32,7 +32,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
                 return NotFound();
             }
 
-            seg_usuarios_grupo = await _context.seg_usuarios_grupos.SingleOrDefaultAsync(m => m.IdsegGrupo == id);
+            seg_usuarios_grupo = await _context.seg_usuarios_grupos.SingleOrDefaultAsync(m => m.IdGrupo == id);
 
             if (seg_usuarios_grupo.Activo == "S") {
                 ActivoP = true;
@@ -74,8 +74,8 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
 
         public async Task<IActionResult> OnPostAsync(bool AcivoP, bool BorradoP)
         {
-            seg_usuarios_grupo.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
-            seg_usuarios_grupo.FechaUltMod = DateTime.Now;
+            //seg_usuarios_grupo.UsuarioMod = Microsoft.AspNetCore.Mvc.Razor.Global.name;
+            //seg_usuarios_grupo.FechaUltMod = DateTime.Now;
             if (ActivoP)
             {
                 seg_usuarios_grupo.Activo = "S";
@@ -129,7 +129,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_seg_usuarios_grupos
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!seg_usuarios_grupoExists(seg_usuarios_grupo.IdsegGrupo))
+                if (!seg_usuarios_grupoExists(seg_usuarios_grupo.IdGrupo))
                 {
                     return NotFound();
                 }

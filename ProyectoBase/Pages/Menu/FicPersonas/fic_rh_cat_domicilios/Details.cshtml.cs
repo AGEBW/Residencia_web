@@ -18,7 +18,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_domicilios
             _context = context;
         }
 
-        public rh_cat_domicilio rh_cat_domicilio { get; set; }
+        public rh_cat_domicilios rh_cat_domicilio { get; set; }
 
         public string Control { get; set; }
         public int IdP { get; set; }

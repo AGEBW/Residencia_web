@@ -5,20 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
 {
     public class IndexModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public IndexModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public IndexModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public IList<rh_cat_telefono> rh_cat_telefono { get; set; }
+        public IList<rh_cat_telefonos> rh_cat_telefono { get; set; }
 
         public string control { get; set; }
         public int id { get; set; }
@@ -29,7 +29,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
         public string search { get; set; }
 
         [BindProperty]
-        public rh_cat_persona rh_cat_persona { get; set; }
+        public rh_cat_personas rh_cat_persona { get; set; }
 
         //Método GET
         public async Task<IActionResult> OnGetAsync(int id, string search, string searchString, string control, string ap, string am)
@@ -57,7 +57,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
             if (!String.IsNullOrEmpty(search))
             {
                 item = item.Where(s => s.Principal.Contains(search) || s.Activo.Contains(search) || s.Borrado.Contains(search) || s.CodPais.Contains(search)
-                || s.NumTelefono.Contains(search) || s.NumExtencion.Contains(search) || s.Referencia.Contains(search)
+                || s.NumTelefono.Contains(search) || s.NumExtension.Contains(search) || s.Referencia.Contains(search)
                 || s.UsuarioMod.Contains(search) || s.UsuarioReg.Contains(search));
             }
 

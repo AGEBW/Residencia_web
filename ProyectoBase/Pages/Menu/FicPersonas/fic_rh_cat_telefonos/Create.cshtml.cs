@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
 {
     public class CreateModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public CreateModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public CreateModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
         public bool TelP { get; set; }
 
         [BindProperty]
-        public rh_cat_persona rh_cat_persona { get; set; }
+        public rh_cat_personas rh_cat_persona { get; set; }
 
         public string Control { get; set; }
         public int IdP { get; set; }
@@ -41,7 +41,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
             SearchString = searchString;
             TelP = false;
 
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
@@ -72,7 +72,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_telefonos
         }
 
         [BindProperty]
-        public rh_cat_telefono rh_cat_telefono { get; set; }
+        public rh_cat_telefonos rh_cat_telefono { get; set; }
 
         //Método POST
         public async Task<IActionResult> OnPostAsync(bool TelP)

@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ProyectoBase.Models.FicPersonas;
+using ProyectoBase.Models;
 
 namespace ProyectoBase.Pages.FicPersonas.fic_rh_cat_personas
 {
     public class CreateModel : PageModel
     {
-        private readonly ProyectoBase.Models.FicPersonas.ApplicationDbContext _context;
+        private readonly ProyectoBase.Models.ApplicationDbContext _context;
 
-        public CreateModel(ProyectoBase.Models.FicPersonas.ApplicationDbContext context)
+        public CreateModel(ProyectoBase.Models.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -94,7 +94,7 @@ namespace ProyectoBase.Pages.FicPersonas.fic_rh_cat_personas
         }
 
         [BindProperty]
-        public rh_cat_persona rh_cat_persona { get; set; }
+        public rh_cat_personas rh_cat_persona { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
