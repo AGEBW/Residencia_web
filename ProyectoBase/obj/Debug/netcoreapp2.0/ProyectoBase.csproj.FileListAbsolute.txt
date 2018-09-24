@@ -196,3 +196,15 @@ C:\Users\acer\Desktop\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\Proyect
 C:\Users\acer\Desktop\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.AssemblyInfo.cs
 C:\Users\acer\Desktop\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.dll
 C:\Users\acer\Desktop\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.pdb
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\bin\Debug\netcoreapp2.0\ProyectoBase.deps.json
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\bin\Debug\netcoreapp2.0\ProyectoBase.runtimeconfig.json
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\bin\Debug\netcoreapp2.0\ProyectoBase.runtimeconfig.dev.json
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\bin\Debug\netcoreapp2.0\ProyectoBase.dll
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\bin\Debug\netcoreapp2.0\ProyectoBase.pdb
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.csprojAssemblyReference.cache
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.csproj.CoreCompileInputs.cache
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.AssemblyInfoInputs.cache
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.AssemblyInfo.cs
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.dll
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\ProyectoBase.pdb
+C:\Users\acer\Desktop\Materia\Residencia\Proyecto Seguridad Page Razor - Final\Proyecto-DAE\ProyectoBase\ProyectoBase\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

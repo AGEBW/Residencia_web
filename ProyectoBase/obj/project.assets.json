@@ -13130,11 +13130,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\acer\\Desktop\\Proyecto Seguridad Page Razor - Final\\Proyecto-DAE\\ProyectoBase\\ProyectoBase\\ProyectoBase.csproj",
+      "projectUniqueName": "C:\\Users\\acer\\Desktop\\Materia\\Residencia\\Proyecto Seguridad Page Razor - Final\\Proyecto-DAE\\ProyectoBase\\ProyectoBase\\ProyectoBase.csproj",
       "projectName": "ProyectoBase",
-      "projectPath": "C:\\Users\\acer\\Desktop\\Proyecto Seguridad Page Razor - Final\\Proyecto-DAE\\ProyectoBase\\ProyectoBase\\ProyectoBase.csproj",
+      "projectPath": "C:\\Users\\acer\\Desktop\\Materia\\Residencia\\Proyecto Seguridad Page Razor - Final\\Proyecto-DAE\\ProyectoBase\\ProyectoBase\\ProyectoBase.csproj",
       "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\acer\\Desktop\\Proyecto Seguridad Page Razor - Final\\Proyecto-DAE\\ProyectoBase\\ProyectoBase\\obj\\",
+      "outputPath": "C:\\Users\\acer\\Desktop\\Materia\\Residencia\\Proyecto Seguridad Page Razor - Final\\Proyecto-DAE\\ProyectoBase\\ProyectoBase\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

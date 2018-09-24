@@ -47,7 +47,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
             this.search = search;
 
             //Esto es para mostrar solo los domicilios de un usuario gracias a su id
-            var item = from m in _context.rh_cat_dir_webs
+            var item = from m in _context.rh_cat_dir_web
                        select m;
 
             if (!String.IsNullOrEmpty(search))

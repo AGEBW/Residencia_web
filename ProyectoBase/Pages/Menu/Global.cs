@@ -15,6 +15,7 @@ namespace Microsoft.AspNetCore.Mvc.Razor
         public static bool contraseña_incorrecta { get; set; }
         public static bool contraseña_no_actual { get; set; }
         public static bool contraseña_expiro { get; set; }
+        public static bool correo_valido { get; set; }
 
         public static bool contraseña_sistema{ get; set; }
         public static bool contraseñas_vacias { get; set; }

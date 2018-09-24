@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProyectoBase.Models;
+using ProyectoBase.Pages;
+
 
 namespace ProyectoBase
 {
@@ -30,6 +33,14 @@ namespace ProyectoBase
                   options.RootDirectory = "/Pages/Menu";
                   options.Conventions.AuthorizeFolder("/Menu");
               });
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+            // Add application services.  
+            //services.AddTransient<IEmailSender, EmailSender>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +50,7 @@ namespace ProyectoBase
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
+              //  app.UseDatabaseErrorPage();
             }
             else
             {
@@ -46,15 +58,15 @@ namespace ProyectoBase
             }
 
             app.UseStaticFiles();
-
-            app.UseMvc();
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        //template: "{controller=Pages}/{controller=Menu}/{action=Index}/{id?}");
-            //        template: "Pages/Menu/Index");
-            //});
+            //app.UseAuthentication();
+            //  app.UseMvc();
+            app.UseMvc(routes =>
+            {
+              //  routes.MapRoute(
+                //    name: "default",
+                    //template: "{controller=Pages}/{controller=Menu}/{action=Index}/{id?}");
+                  //  template: "Pages/Menu/FicPersonas");
+            });
         }
     }
 }

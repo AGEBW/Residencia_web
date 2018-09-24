@@ -88,7 +88,7 @@ namespace ProyectoBase.Pages.Menu
                 var fecha = DateTime.Today;
 
                 //insertar personas
-                cmd.CommandText = "INSERT INTO rh_cat_personas VALUES(1,'" + numerocontrol + "','" + nombre + "','" + apPaterno + "','" + apMaterno + "','','',GETDATE(),'','" + sexo + "','" + rutafoto + "','" + alias + "',GETDATE(),GETDATE(),'Sistema','Sistema','S','N',5,22,6,28);";
+                cmd.CommandText = "INSERT INTO rh_cat_personas VALUES(1,'"+numerocontrol + "','" + nombre + "','" + apPaterno + "','" + apMaterno + "','','','','','" + sexo + "','" + rutafoto + "','" + alias + "','S','N','Sistema','Sistema','N');";
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = sqlConnection1;
                 reader = cmd.ExecuteReader();
@@ -100,7 +100,7 @@ namespace ProyectoBase.Pages.Menu
                 // aqui tengo el id de la persona   *** rh_cat_persona.IdPersona ***
                 sqlConnection1.Open();
                 //insertar en dir web
-                cmd.CommandText = "INSERT INTO rh_cat_dir_webs VALUES ('','"+confirmaemail+"','S','"+idpersona+"','Correo Inicial',GETDATE(),GETDATE(),'Sistema','Sistema','S','N',9,77);";
+                cmd.CommandText = "INSERT INTO rh_cat_dir_web VALUES ('','"+confirmaemail+"','S','"+idpersona+"','Correo Inicial',GETDATE(),GETDATE(),'Sistema','Sistema','S','N',9,77);";
                  cmd.CommandType = CommandType.Text;
                  cmd.Connection = sqlConnection1;
                  reader = cmd.ExecuteReader();

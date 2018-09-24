@@ -28,7 +28,7 @@
             <tr class="div">
                 <td>
                     <label class="control-label">Usuario</label>
-                    <input type="text" asp-for="Usuario" class="form-control" autocomplete="off"/>
+                    <input type="text" asp-for="Usuario" class="form-control" autocomplete="off" />
                 </td>
 
             </tr>
@@ -46,6 +46,12 @@
         <br />
         <input type="submit" value="Login" class="btn btn-default" id="open" />
         <label class="control-label">Intentos: @Microsoft.AspNetCore.Mvc.Razor.Global.intentos</label>
+
+        <div >
+            <div >
+                <a asp-page="./GoogleAuth">Google</a>
+            </div>
+        </div>
 
         @if (Microsoft.AspNetCore.Mvc.Razor.Global.usuario_incorrecto == true)
         {

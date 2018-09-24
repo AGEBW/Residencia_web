@@ -46,7 +46,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
                 return NotFound();
             }
 
-            rh_cat_dir_web = await _context.rh_cat_dir_webs.SingleOrDefaultAsync(m => m.IdDirWeb == id);
+            rh_cat_dir_web = await _context.rh_cat_dir_web.SingleOrDefaultAsync(m => m.IdDirWeb == id);
 
             if (rh_cat_dir_web == null)
             {
@@ -145,7 +145,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
             //Si es el domicilio principal entonces tiene que buscar si hay otro para desmarcarlo
             if (rh_cat_dir_web.Principal == "S")
             {
-                var cambiarPrincipal = await _context.rh_cat_dir_webs.SingleOrDefaultAsync
+                var cambiarPrincipal = await _context.rh_cat_dir_web.SingleOrDefaultAsync
                     (m => m.IdDirWeb != rh_cat_dir_web.IdDirWeb && m.Principal == "S");
 
                 if (cambiarPrincipal != null)
@@ -159,7 +159,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
             //Si quiere quitar el domicilio principal primero debemos de ver que no sea el ultimo
             else
             {
-                var cambiarPrincipal = await _context.rh_cat_dir_webs.SingleOrDefaultAsync
+                var cambiarPrincipal = await _context.rh_cat_dir_web.SingleOrDefaultAsync
                     (m => m.IdDirWeb != rh_cat_dir_web.IdDirWeb && m.Principal == "S");
                 //Si es nulo significa que va a dejar sin domicilio principal, entonces no lo dejamos desmarcar la casilla
                 if (cambiarPrincipal == null)
@@ -190,7 +190,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
 
         private bool rh_cat_dir_webExists(int id)
         {
-            return _context.rh_cat_dir_webs.Any(e => e.IdDirWeb == id);
+            return _context.rh_cat_dir_web.Any(e => e.IdDirWeb == id);
         }
     }
 }

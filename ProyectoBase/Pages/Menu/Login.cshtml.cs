@@ -34,7 +34,7 @@ namespace ProyectoBase.Pages.Menu
 
 
         
-        public async Task<IActionResult> OnGetAsync(string FicPaUsuario, string FicPaContraseña, string FicPaContraseña_vieja, string FicPaContraseña_nueva)
+        public async Task<IActionResult> OnGetAsync(string Usuario, string Contraseña, string Contraseña_vieja, string Contraseña_nueva)
         {
 
             Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_no_actual = false;
@@ -49,25 +49,25 @@ namespace ProyectoBase.Pages.Menu
             Microsoft.AspNetCore.Mvc.Razor.Global.bloqueado_por_intentos = false;
             Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_sistema = false;
 
-            cat_usuarios = await _context.cat_usuarios.SingleOrDefaultAsync(m => m.Usuario == FicPaUsuario);
+            cat_usuarios = await _context.cat_usuarios.SingleOrDefaultAsync(m => m.Usuario == Usuario);
 
             int idusuario = 0;
 
             if (cat_usuarios==null) {}
             else {idusuario = cat_usuarios.IdUsuario; }
 
-            seg_expira_clave = await _context.seg_expira_claves.SingleOrDefaultAsync(m => m.IdUsuario == idusuario && m.Clave == FicPaContraseña);
+            seg_expira_clave = await _context.seg_expira_claves.SingleOrDefaultAsync(m => m.IdUsuario == idusuario && m.Clave == Contraseña);
 
             seg_usuario_estatus = await _context.seg_usuarios_estatus.SingleOrDefaultAsync(m => m.IdUsuario == idusuario && m.Actual == "S");
 
-            if (FicPaContraseña_vieja != FicPaContraseña_nueva) {
+            if (Contraseña_vieja != Contraseña_nueva) {
                 Microsoft.AspNetCore.Mvc.Razor.Global.contraseñas_no_coinciden = true;
             }
             else { 
-            if (FicPaContraseña_vieja == FicPaContraseña_nueva && FicPaContraseña_vieja != null)
+            if (Contraseña_vieja == Contraseña_nueva && Contraseña_vieja != null)
             {
                 
-                if (FicPaContraseña_vieja == FicPaContraseña && FicPaContraseña_nueva == FicPaContraseña)
+                if (Contraseña_vieja == Contraseña && Contraseña_nueva == Contraseña)
                 {
                     Microsoft.AspNetCore.Mvc.Razor.Global.contraseña_igual_anterior = true;
                 }
@@ -94,7 +94,7 @@ namespace ProyectoBase.Pages.Menu
 
                         var fechafin = (DateTime.Today).AddMonths(6);
                         var fecha = DateTime.Today;
-                        cmd.CommandText = "INSERT INTO seg_expira_claves VALUES (" + idusuario + ",GETDATE(),GETDATE()+180,'S','" + FicPaContraseña_nueva + "','N',GETDATE(),'Sistema','Sistema','S','N',GETDATE());";
+                        cmd.CommandText = "INSERT INTO seg_expira_claves VALUES (" + idusuario + ",GETDATE(),GETDATE()+180,'S','" + Contraseña_nueva + "','N',GETDATE(),'Sistema','Sistema','S','N',GETDATE());";
                         cmd.CommandType = CommandType.Text;
                         cmd.Connection = sqlConnection1;
 
@@ -113,7 +113,7 @@ namespace ProyectoBase.Pages.Menu
             
 
             //Validaciones
-            if (FicPaUsuario==null) { return Page(); }
+            if (Usuario==null) { return Page(); }
             else { 
 
                     if (cat_usuarios==null) {
@@ -205,7 +205,7 @@ namespace ProyectoBase.Pages.Menu
                                 {
                                     Microsoft.AspNetCore.Mvc.Razor.Global.intentos = 0;
                                     Microsoft.AspNetCore.Mvc.Razor.Global.Login = true;
-                                    Microsoft.AspNetCore.Mvc.Razor.Global.name = FicPaUsuario;
+                                    Microsoft.AspNetCore.Mvc.Razor.Global.name = Usuario;
                                     return RedirectToPage("./Index");
 
                                 }

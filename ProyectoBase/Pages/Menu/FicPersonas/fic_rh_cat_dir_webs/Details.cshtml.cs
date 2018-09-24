@@ -43,7 +43,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
                 return NotFound();
             }
 
-            rh_cat_dir_web = await _context.rh_cat_dir_webs.SingleOrDefaultAsync(m => m.IdDirWeb == id);
+            rh_cat_dir_web = await _context.rh_cat_dir_web.SingleOrDefaultAsync(m => m.IdDirWeb == id);
 
             if (rh_cat_dir_web == null)
             {
@@ -51,7 +51,7 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
             }
 
             //Nombre del tipo de telefono
-            var query = from dir_web in _context.rh_cat_dir_webs
+            var query = from dir_web in _context.rh_cat_dir_web
                         join generales in _context.cat_generales on dir_web.IdGenDirWeb equals generales.IdGeneral
                         where dir_web.IdDirWeb == rh_cat_dir_web.IdDirWeb
                         select new { nombre = generales.DesGeneral };

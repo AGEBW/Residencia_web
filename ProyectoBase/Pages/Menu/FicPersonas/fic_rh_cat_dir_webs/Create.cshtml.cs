@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProyectoBase.Models;
 
-namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
+namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_web
 {
     public class CreateModel : PageModel
     {
@@ -95,11 +95,11 @@ namespace ProyectoBase.Pages.Menu.FicPersonas.fic_rh_cat_dir_webs
                 rh_cat_dir_web.Principal = "N";
             }
 
-            _context.rh_cat_dir_webs.Add(rh_cat_dir_web);
+            _context.rh_cat_dir_web.Add(rh_cat_dir_web);
 
             if (rh_cat_dir_web.Principal == "S")
             {
-                var cambiarPrincipal = await _context.rh_cat_dir_webs.SingleOrDefaultAsync
+                var cambiarPrincipal = await _context.rh_cat_dir_web.SingleOrDefaultAsync
                     (m => m.IdDirWeb != rh_cat_dir_web.IdDirWeb && m.Principal == "S");
                 //Si es nulo significa que aun no registraban ninguna direccion web como principal
                 if (cambiarPrincipal != null)

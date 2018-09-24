@@ -31,7 +31,10 @@ namespace ProyectoBase.Pages.Menu
         public string usuario { get; set; }
         [BindProperty]
         public cat_usuarios Usuario { get; set; }
-    
+        public string error { get; set; }
+        string tUsuario=" ";
+
+
 
 
         public async Task<IActionResult> OnGetAsync(string correo,string usuario)
@@ -44,6 +47,55 @@ namespace ProyectoBase.Pages.Menu
                 MailMessage mail = new MailMessage();
 
                 mail.From = new MailAddress("calabazos2018dae@gmail.com");
+                
+
+                try
+                {
+                  
+
+                    SqlConnection connection2 = new SqlConnection("Server=ADAMGE\\AGE12400269;Database=DB_EVA_TEC_TOTAL;Trusted_Connection=True;MultipleActiveResultSets=true");
+                    string commandtext2 = "SELECT DirWeb  FROM rh_cat_personas  WHERE UsuarioReg='" + usuario + "';";
+                    SqlCommand command2 = new SqlCommand(commandtext2, connection2);
+                    connection2.Open();
+                    tUsuario = (string)command2.ExecuteScalar();
+                    connection2.Close();
+
+                 
+                }
+                catch ( Exception ex )
+                {
+                    Microsoft.AspNetCore.Mvc.Razor.Global.correo_valido = true;
+                }
+
+                try
+                {
+                    SqlConnection connection = new SqlConnection("Server=ADAMGE\\AGE12400269;Database=DB_EVA_TEC_TOTAL;Trusted_Connection=True;MultipleActiveResultSets=true");
+                    string commandtext = "SELECT DirWeb  FROM rh_cat_dir_web  WHERE DirWeb='" + correo + "' AND ClaveReferencia=';" + Usuario.IdUsuario + "';";
+                    SqlCommand command = new SqlCommand(commandtext, connection);
+                    connection.Open();
+                    string tDirweb = (string)command.ExecuteScalar();
+                    connection.Close();
+
+                    //SqlConnection conexion = new SqlConnection("Server=ADAMGE\\AGE12400269;Database=DB_EVA_TEC_TOTAL;Trusted_Connection=True;MultipleActiveResultSets=true");
+                    //string commandotxt = "SELECT DirWeb  FROM rh_cat_dir_web  WHERE ClaveReferencia='" + Usuario.IdUsuario + "';";
+                    //SqlCommand commando = new SqlCommand(commandotxt, conexion);
+                    //conexion.Open();
+                    //string tDi = (string)commando.ExecuteScalar();
+                    //conexion.Close();
+
+
+                    if (tDirweb.Equals(correo) == false)
+                    {
+                        ViewData["Error"] = "El usuario y el correo no coinciden.";
+                        return Page();
+                    }
+
+                }
+                catch( Exception ex)
+                {
+                    Microsoft.AspNetCore.Mvc.Razor.Global.usuario_incorrecto = true;
+                }
+                
 
 
                 //genera codigo aleatorio
@@ -61,20 +113,25 @@ namespace ProyectoBase.Pages.Menu
 
                 //termina de generar codigo
                 Usuario = await _context.cat_usuarios.SingleOrDefaultAsync(m => m.Usuario.Equals(usuario));
-                if (Usuario == null)
+                if (Usuario == null || Usuario.Equals( tUsuario)==false)
                 {
                     ViewData["Error"] = "El usuario no se encuentra registrado.";
                     return Page();
                 }
                 else
                 {
-                    SqlConnection sqlConnection2 = new SqlConnection("Server=(local); Database=Proyecto_DAE; Trusted_Connection=True; MultipleActiveResultSets=true");
+                   
+                      
+                  
+                    SqlConnection sqlConnection2 = new SqlConnection("Server=ADAMGE\\AGE12400269;Database=DB_EVA_TEC_TOTAL;Trusted_Connection=True;MultipleActiveResultSets=true");
                     SqlCommand cmd2 = new SqlCommand();
                     SqlDataReader reader2;
                     sqlConnection2.Open();
 
                     var fechaini = DateTime.Today;
                     var fechafin = (DateTime.Today).AddMonths(6);
+
+                    
 
                     cmd2.CommandText = "Update seg_expira_claves set Actual='N' WHERE IdUsuario="+Usuario.IdUsuario+";";
                     cmd2.CommandType = CommandType.Text;
@@ -89,7 +146,7 @@ namespace ProyectoBase.Pages.Menu
 
                     sqlConnection2.Close();
 
-                    SqlConnection sqlConnection1 = new SqlConnection("Server=(local); Database=Proyecto_DAE; Trusted_Connection=True; MultipleActiveResultSets=true");
+                    SqlConnection sqlConnection1 = new SqlConnection("Server=ADAMGE\\AGE12400269;Database=DB_EVA_TEC_TOTAL;Trusted_Connection=True;MultipleActiveResultSets=true");
                     SqlCommand cmd = new SqlCommand();
                     SqlDataReader reader;
                     sqlConnection1.Open();

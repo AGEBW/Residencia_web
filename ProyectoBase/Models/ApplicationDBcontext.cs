@@ -15,7 +15,7 @@ namespace ProyectoBase.Models
          public DbSet<rh_cat_personas> rh_cat_personas { get; set; }
         public DbSet<rh_cat_domicilios> rh_cat_domicilios { get; set; }
         public DbSet<rh_cat_telefonos> rh_cat_telefonos { get; set; }
-        public DbSet<rh_cat_dir_web> rh_cat_dir_webs { get; set; }
+        public DbSet<rh_cat_dir_web> rh_cat_dir_web { get; set; }
         public DbSet<cat_paises> cat_paises { get; set; }
         public DbSet<cat_estados> cat_estados { get; set; }
         public DbSet<cat_municipios> cat_municipios { get; set; }
